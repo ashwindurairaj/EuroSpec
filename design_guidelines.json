@@ -1,0 +1,147 @@
+{
+  "identity": {
+    "role": "E1: The Anti-AI Designer",
+    "mission": "Create a 'Industrial Royal' aesthetic that merges manufacturing precision with established corporate legacy.",
+    "principles": [
+      "Fusion: Manufacturing Grunt + Royal Elegance",
+      "Content is King: Every pixel serves the '35M parts shipped' scale",
+      "Negative Space: White space is luxury",
+      "Contrast: Deep Navy vs. Stark White"
+    ]
+  },
+  "brand": {
+    "name": "Northern American Tools (Eurospec)",
+    "industry": "Automotive Manufacturing",
+    "tone": "Established, Precise, Global, Royal",
+    "est": "1985"
+  },
+  "theme": {
+    "mode": "light",
+    "strategy": "The Performance Pro (Archetype 2) modified for Royal Corporate",
+    "background": "#FFFFFF",
+    "primary": "#202E4A",
+    "secondary": "#E63946",
+    "surface": "#F8FAFC"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Playfair Display, serif",
+      "weight": "700",
+      "usage": "All H1-H3 headings. This provides the 'Royal' look requested.",
+      "letter_spacing": "tracking-tight"
+    },
+    "body": {
+      "font_family": "Inter, sans-serif",
+      "weight": "400",
+      "usage": "Paragraphs, UI elements, navigation.",
+      "letter_spacing": "tracking-normal"
+    },
+    "mono": {
+      "font_family": "JetBrains Mono, monospace",
+      "usage": "Technical specs, part numbers."
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#202E4A",
+        "foreground": "#FFFFFF",
+        "50": "#f0f4f8",
+        "100": "#d9e2ec",
+        "900": "#101725"
+      },
+      "accent": {
+        "DEFAULT": "#E63946",
+        "foreground": "#FFFFFF",
+        "hover": "#d62839"
+      },
+      "neutral": {
+        "50": "#F8FAFC",
+        "100": "#F1F5F9",
+        "200": "#E2E8F0",
+        "900": "#0F172A"
+      }
+    },
+    "rules": [
+      "Never use gradients for backgrounds. Solid White (#FFFFFF) only.",
+      "Use Deep Navy (#202E4A) for all primary text and headings.",
+      "Use Red (#E63946) ONLY for primary Call-to-Actions (Buttons).",
+      "Borders should be subtle slate (#E2E8F0)."
+    ]
+  },
+  "layout": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "spacing": {
+      "section_padding": "py-24",
+      "element_gap": "gap-8"
+    },
+    "grid_strategy": "Bento Grid for Services. Mix of 1x1, 2x1, and 2x2 cards."
+  },
+  "components": {
+    "hero": {
+      "type": "Immersive",
+      "structure": "Full height (min-h-[80vh]). Background image with heavy Navy overlay (bg-primary/80). Centered typography.",
+      "typography": "H1 in Playfair Display, text-white, text-5xl md:text-7xl.",
+      "cta": "Solid Red button, sharp corners or slight radius (rounded-md)."
+    },
+    "stats": {
+      "type": "Minimal",
+      "structure": "3-column grid. Large serif numbers (text-6xl).",
+      "style": "Clean white background, navy text. No boxes."
+    },
+    "services": {
+      "type": "Bento Grid",
+      "cards": "White cards, shadow-sm, hover:shadow-xl transition-all duration-300. 1px border-slate-100.",
+      "interaction": "Hover lifts card (-translate-y-1)."
+    },
+    "logos": {
+      "type": "Marquee",
+      "style": "Grayscale logos, opacity-50 hover:opacity-100. If images unavailable, use elegant Serif text for brand names."
+    },
+    "navbar": {
+      "style": "Sticky, White background, shadow-sm. Navy text. Red CTA button 'Contact Us'."
+    }
+  },
+  "images": {
+    "hero_main": {
+      "url": "https://images.unsplash.com/photo-1764185800646-f75f7e16e465?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "High tech automotive factory floor",
+      "usage": "Home Page Hero Background"
+    },
+    "innovation": {
+      "url": "https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "Engineer testing vehicle software",
+      "usage": "Innovation / Design Section"
+    },
+    "parts_production": {
+      "url": "https://images.unsplash.com/photo-1758873263428-f4b2edb45fe1?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "Precision metal components",
+      "usage": "Manufacturing / Parts Shipped Stat Background"
+    },
+    "tooling_close_up": {
+      "url": "https://images.unsplash.com/photo-1645754884761-6ada0d53807b?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "CNC Machine close up",
+      "usage": "Tooling Service Card"
+    },
+    "engineering_design": {
+      "url": "https://images.unsplash.com/photo-1769149068959-b11392164add?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "Engineer looking at blueprints",
+      "usage": "Careers / Engineering Section"
+    }
+  },
+  "instructions_to_main_agent": [
+    "1. INSTALL FONTS: Add '@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');' to index.css.",
+    "2. TAILWIND CONFIG: Update theme colors to match the palette defined above. Extend font family: 'serif': ['Playfair Display', ...defaultTheme.fontFamily.serif].",
+    "3. SHADCN: Use 'card', 'button', 'input', 'label', 'textarea', 'dialog', 'sheet' components. Customize them to remove default rounded-xl if present, prefer rounded-md.",
+    "4. IMAGES: Use the provided Unsplash URLs. Add 'object-cover' to all images.",
+    "5. LOGOS: Since specific brand logos (Ford, BMW) are copyrighted, render them as high-end text logos in the 'Client' section using the Playfair font in grayscale, or use placeholders if you prefer.",
+    "6. MAP: Use an iframe for the Google Map in the Contact section. Address: 'Windsor, Ontario' (Generic automotive hub location for context).",
+    "7. DATA-TESTID: Add data-testid to all interactive elements (buttons, links, inputs)."
+  ],
+  "universal_guidelines": [
+    "Avoid 'AI Slop': No generic blue gradients. No 'robot' icons.",
+    "Micro-interactions: Add hover states to everything.",
+    "Spacing: Use 'py-24' for section spacing. Don't cram content.",
+    "Accessibility: Ensure Navy text on White bg meets contrast (it does, 13:1)."
+  ]
+}
