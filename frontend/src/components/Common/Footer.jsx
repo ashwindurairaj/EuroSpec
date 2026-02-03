@@ -9,7 +9,7 @@ export const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div>
-              <h3 className="font-serif text-xl font-bold text-white">Northern American Tools</h3>
+              <h3 className="font-serif text-xl font-bold text-white">North American Metals</h3>
               <p className="text-sm text-gray-300 mt-1">operating as EUROSPEC</p>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -106,7 +106,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Northern American Tools / Eurospec Manufacturing Inc. All rights reserved.
+            © {new Date().getFullYear()} North American Metals / Eurospec Manufacturing Inc. All rights reserved.
           </p>
           <p className="text-sm text-gray-400">
             IATF 16949 Certified

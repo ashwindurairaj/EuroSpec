@@ -25,7 +25,7 @@ export const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3" data-testid="logo-link">
             <div className="flex flex-col">
-              <span className="font-serif text-lg font-bold text-primary leading-tight">Northern American Tools</span>
+              <span className="font-serif text-lg font-bold text-primary leading-tight">North American Metals</span>
               <span className="text-xs text-muted-foreground tracking-wide">operating as EUROSPEC</span>
             </div>
           </Link>
@@ -72,7 +72,7 @@ export const Header = () => {
               <SheetContent side="right" className="w-[300px] sm:w-[350px]">
                 <div className="flex flex-col gap-6 mt-8">
                   <div className="flex flex-col">
-                    <span className="font-serif text-lg font-bold text-primary">Northern American Tools</span>
+                    <span className="font-serif text-lg font-bold text-primary">North American Metals</span>
                     <span className="text-xs text-muted-foreground">operating as EUROSPEC</span>
                   </div>
                   <nav className="flex flex-col gap-4">
