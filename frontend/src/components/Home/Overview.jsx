@@ -44,7 +44,7 @@ export const Overview = () => {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" 
+                src="https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=600&q=80" 
                 alt="Precision machining"
                 className="w-full h-48 object-cover rounded-md shadow-md"
               />
