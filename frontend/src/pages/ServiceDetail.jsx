@@ -95,7 +95,7 @@ export const ServiceDetail = () => {
       subtitle: 'Preferred Tooling Vendor for OEMs Globally',
       bannerImage: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebb6122?auto=format&fit=crop&w=1920&q=80',
       image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebb6122?auto=format&fit=crop&w=800&q=80',
-      description: 'Eurospec is a preferred tooling vendor for OEMs globally, specializing in progressive dies, transfer dies, and line dies.',
+      description: 'Eurospec is a preferred tooling vendor for OEMs globally, specializing in progressive dies, transfer dies, and line dies. Our in-house capabilities ensure precision, quality, and timely delivery for all your tooling requirements.',
     };
     features = toolingFeatures;
   } else if (serviceId === 'manufacturing') {
@@ -104,43 +104,43 @@ export const ServiceDetail = () => {
       subtitle: 'Full-Service Automotive Manufacturing',
       bannerImage: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1920&q=80',
       image: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800&q=80',
-      description: 'Our manufacturing facilities feature state-of-the-art mechanical presses and automated systems.',
+      description: 'Our manufacturing facilities feature state-of-the-art mechanical presses and automated systems, producing over 60 million components annually for the automotive industry worldwide.',
     };
     features = manufacturingFeatures;
   } else if (serviceId === 'design') {
     service = {
       title: 'Design & Development',
       subtitle: 'Complete In-House Engineering Capabilities',
-      bannerImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
-      description: 'Full-service engineering department provides CAD design, CAE analysis, prototyping, and validation.',
+      bannerImage: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=1920&q=80',
+      image: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=800&q=80',
+      description: 'Full-service engineering department provides CAD design, CAE analysis, prototyping, and validation using industry-leading software and technologies.',
     };
     features = designFeatures;
   } else if (serviceId === 'capabilities') {
     service = {
       title: 'Capabilities',
       subtitle: 'Advanced Materials & Process Expertise',
-      bannerImage: 'https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&w=1920&q=80',
-      image: 'https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&w=800&q=80',
-      description: 'Four decades of expertise in advanced automotive materials and complex manufacturing processes.',
+      bannerImage: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=1920&q=80',
+      image: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=800&q=80',
+      description: 'Four decades of expertise in advanced automotive materials and complex manufacturing processes. We work with the most demanding materials in the industry.',
     };
     features = capabilitiesFeatures;
   } else if (serviceId === 'assembly') {
     service = {
       title: 'Assembly',
       subtitle: 'Complex Automotive Sub-Assemblies',
-      bannerImage: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=1920&q=80',
-      image: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=800&q=80',
-      description: 'Complex sub-assemblies for automotive seating, body-in-white, and chassis systems.',
+      bannerImage: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=1920&q=80',
+      image: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=800&q=80',
+      description: 'Complex sub-assemblies for automotive seating, body-in-white, and chassis systems for major OEM platforms worldwide.',
     };
     features = assemblyFeatures;
   } else if (serviceId === 'innovation') {
     service = {
       title: 'Innovation',
       subtitle: 'Advanced Simulation & Analysis',
-      bannerImage: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1920&q=80',
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
-      description: 'Advanced forming simulations and analysis tools to optimize designs and ensure quality.',
+      bannerImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+      description: 'Advanced forming simulations and analysis tools to optimize designs, reduce development time, and ensure first-time quality.',
     };
     features = innovationFeatures;
   }
