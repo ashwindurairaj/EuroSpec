@@ -64,7 +64,7 @@ const services = [
     id: 'tooling',
     title: 'Tooling',
     icon: Wrench,
-    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebb6122?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1764185800646-f75f7e16e465?auto=format&fit=crop&w=800&q=80',
     description: 'Progressive dies, transfer dies, and line dies. Preferred tooling vendor for OEMs globally.',
     features: toolingFeatures,
   },

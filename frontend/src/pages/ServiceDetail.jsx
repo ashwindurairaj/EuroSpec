@@ -93,8 +93,8 @@ export const ServiceDetail = () => {
     service = {
       title: 'Tooling',
       subtitle: 'Preferred Tooling Vendor for OEMs Globally',
-      bannerImage: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebb6122?auto=format&fit=crop&w=1920&q=80',
-      image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebb6122?auto=format&fit=crop&w=800&q=80',
+      bannerImage: 'https://images.unsplash.com/photo-1764185800646-f75f7e16e465?auto=format&fit=crop&w=1920&q=80',
+      image: 'https://images.unsplash.com/photo-1727373203627-73457889fe0f?auto=format&fit=crop&w=800&q=80',
       description: 'Eurospec is a preferred tooling vendor for OEMs globally, specializing in progressive dies, transfer dies, and line dies. Our in-house capabilities ensure precision, quality, and timely delivery for all your tooling requirements.',
     };
     features = toolingFeatures;
