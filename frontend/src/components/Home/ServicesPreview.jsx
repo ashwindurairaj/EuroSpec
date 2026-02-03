@@ -23,28 +23,28 @@ const services = [
     title: 'Design & Development',
     description: 'CAD design, CAE, prototyping and validation. Metal forming simulation with CATIA, NX, and SolidWorks.',
     icon: PenTool,
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'capabilities',
     title: 'Capabilities',
     description: 'HSLA, Dual Phase steels up to 1000MPa. Material thickness from 1mm to 8mm.',
     icon: Cog,
-    image: 'https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'assembly',
     title: 'Assembly',
     description: 'Fully automated assemblies, riveting, staking, projection welding, spot welding, and robotic MIG welding.',
     icon: Boxes,
-    image: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'innovation',
     title: 'Innovation',
     description: 'Forming simulations, material thinning analysis, and advanced CAE capabilities for optimized designs.',
     icon: Sparkles,
-    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
   },
 ];
 
