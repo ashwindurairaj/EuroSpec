@@ -56,7 +56,7 @@ export const Overview = () => {
             </div>
             <div className="pt-8">
               <img 
-                src="https://images.unsplash.com/photo-1504917595217-d4dc5ebb6122?auto=format&fit=crop&w=600&q=80" 
+                src="https://images.unsplash.com/photo-1742967416909-ffbceccbf4da?auto=format&fit=crop&w=600&q=80" 
                 alt="Quality inspection"
                 className="w-full h-80 object-cover rounded-md shadow-md"
               />

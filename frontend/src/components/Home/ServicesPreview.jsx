@@ -9,7 +9,7 @@ const services = [
     title: 'Tooling',
     description: 'Progressive dies, transfer dies, and line dies up to 180 inches. In-house tool design and certification.',
     icon: Wrench,
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'manufacturing',
