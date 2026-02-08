@@ -128,12 +128,16 @@ class NorthAmericanMetalsAPITester:
             "experience": "3-5"
         }
         
+        # Use files parameter but with empty resume
+        files = {}
+        
         return self.run_test(
             "Job Application without Resume",
             "POST",
             "api/apply",
             200,
-            data=form_data
+            data=form_data,
+            files=files
         )
 
 def main():
