@@ -128,8 +128,8 @@ class NorthAmericanMetalsAPITester:
             "experience": "3-5"
         }
         
-        # Use files parameter but with empty resume
-        files = {}
+        # Send as multipart form data without file
+        files = {'resume': (None, None)}
         
         return self.run_test(
             "Job Application without Resume",
