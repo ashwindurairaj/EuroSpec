@@ -1,147 +1,122 @@
 {
-  "identity": {
-    "role": "E1: The Anti-AI Designer",
-    "mission": "Create a 'Industrial Royal' aesthetic that merges manufacturing precision with established corporate legacy.",
-    "principles": [
-      "Fusion: Manufacturing Grunt + Royal Elegance",
-      "Content is King: Every pixel serves the '35M parts shipped' scale",
-      "Negative Space: White space is luxury",
-      "Contrast: Deep Navy vs. Stark White"
-    ]
+  "project_context": {
+    "client": "North American Metals Corp (NAMCO) / Eurospec",
+    "industry": "Automotive Manufacturing (B2B)",
+    "goal": "Transform a static React site into a 2026-era modern, highly animated, 3D-inspired marketing experience."
   },
-  "brand": {
-    "name": "Northern American Tools (Eurospec)",
-    "industry": "Automotive Manufacturing",
-    "tone": "Established, Precise, Global, Royal",
-    "est": "1985"
-  },
-  "theme": {
-    "mode": "light",
-    "strategy": "The Performance Pro (Archetype 2) modified for Royal Corporate",
-    "background": "#FFFFFF",
-    "primary": "#202E4A",
-    "secondary": "#E63946",
-    "surface": "#F8FAFC"
+  "theme_and_archetype": {
+    "theme": "dark",
+    "archetype": "Archetype 4 (Swiss & High-Contrast) + Archetype 5 (Luxury Precision)",
+    "rationale": "For an IATF 16949 certified automotive manufacturer, the design must exude precision engineering, authority, and modern robotics. A dark, cinematic metallic theme with stark red accents achieves the 'Godly' 2026 3D feel without losing B2B credibility."
   },
   "typography": {
-    "headings": {
-      "font_family": "Playfair Display, serif",
-      "weight": "700",
-      "usage": "All H1-H3 headings. This provides the 'Royal' look requested.",
-      "letter_spacing": "tracking-tight"
-    },
-    "body": {
-      "font_family": "Inter, sans-serif",
-      "weight": "400",
-      "usage": "Paragraphs, UI elements, navigation.",
-      "letter_spacing": "tracking-normal"
-    },
-    "mono": {
-      "font_family": "JetBrains Mono, monospace",
-      "usage": "Technical specs, part numbers."
-    }
-  },
-  "colors": {
-    "palette": {
-      "primary": {
-        "DEFAULT": "#202E4A",
-        "foreground": "#FFFFFF",
-        "50": "#f0f4f8",
-        "100": "#d9e2ec",
-        "900": "#101725"
+    "fonts": [
+      {
+        "role": "headings",
+        "family": "Cabinet Grotesk",
+        "url": "https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,900&display=swap",
+        "css_class": "font-cabinet",
+        "weight_strategy": "Use font-black (900) or font-extrabold (800) for massive hero text. tracking-tighter is MANDATORY."
       },
-      "accent": {
-        "DEFAULT": "#E63946",
-        "foreground": "#FFFFFF",
-        "hover": "#d62839"
+      {
+        "role": "body",
+        "family": "IBM Plex Sans",
+        "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap",
+        "css_class": "font-plex",
+        "weight_strategy": "Use font-light (300) or font-normal (400) for high readability."
       },
-      "neutral": {
-        "50": "#F8FAFC",
-        "100": "#F1F5F9",
-        "200": "#E2E8F0",
-        "900": "#0F172A"
+      {
+        "role": "mono_accents",
+        "family": "JetBrains Mono",
+        "url": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap",
+        "css_class": "font-mono",
+        "weight_strategy": "Use for numeric counters, overlines, and technical specs. tracking-widest for uppercase overlines."
       }
-    },
-    "rules": [
-      "Never use gradients for backgrounds. Solid White (#FFFFFF) only.",
-      "Use Deep Navy (#202E4A) for all primary text and headings.",
-      "Use Red (#E63946) ONLY for primary Call-to-Actions (Buttons).",
-      "Borders should be subtle slate (#E2E8F0)."
     ]
   },
-  "layout": {
-    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-    "spacing": {
-      "section_padding": "py-24",
-      "element_gap": "gap-8"
+  "colors": {
+    "background": {
+      "base": "#0A0A0C",
+      "surface": "#13151A",
+      "elevated": "#1A1C23",
+      "overlay": "rgba(10, 10, 12, 0.7)"
     },
-    "grid_strategy": "Bento Grid for Services. Mix of 1x1, 2x1, and 2x2 cards."
+    "brand": {
+      "primary": "#FF2A2A",
+      "primary_hover": "#FF5555",
+      "primary_glow": "rgba(255, 42, 42, 0.4)",
+      "secondary_navy": "#141D2E"
+    },
+    "text": {
+      "heading": "#FFFFFF",
+      "body": "#A1A1AA",
+      "muted": "#71717A",
+      "inverse": "#0A0A0C"
+    },
+    "borders": {
+      "subtle": "rgba(255, 255, 255, 0.08)",
+      "strong": "rgba(255, 255, 255, 0.2)"
+    }
   },
-  "components": {
-    "hero": {
-      "type": "Immersive",
-      "structure": "Full height (min-h-[80vh]). Background image with heavy Navy overlay (bg-primary/80). Centered typography.",
-      "typography": "H1 in Playfair Display, text-white, text-5xl md:text-7xl.",
-      "cta": "Solid Red button, sharp corners or slight radius (rounded-md)."
+  "motion_and_3d_strategy": {
+    "core_libraries": [
+      "framer-motion",
+      "@studio-freight/react-lenis",
+      "react-fast-marquee",
+      "lucide-react"
+    ],
+    "smooth_scroll": "MANDATORY. Wrap the main layout in `<ReactLenis root>`. This gives the page the heavy, premium momentum required for 2026 aesthetics.",
+    "hero_3d_effect": "Instead of heavy WebGL, use Parallax + Framer Motion. Layer the background image, apply a slow scale-up animation (`scale: 1.05`), and use `useScroll` to map the Y offset. Text must stagger in with a 3D rotation (`rotateX: 90 -> 0`).",
+    "card_tilt": "For all Service and Facility cards, implement a custom Framer Motion 'Tilt' effect. Map `onMouseMove` to `rotateX` and `rotateY` via `useMotionValue` and `useSpring` to create an interactive glassmorphism 3D depth effect.",
+    "animated_counters": "Home page stats (40+, 250, 60M, 35M) MUST use Framer Motion's `useSpring(0, { mass: 1, stiffness: 50 })` triggered when `whileInView` fires. Do not just use static numbers.",
+    "page_transitions": "Wrap routes in `AnimatePresence`. Page enter: `opacity: 0, y: 20, filter: 'blur(10px)'` -> `opacity: 1, y: 0, filter: 'blur(0px)'`.",
+    "staggered_reveals": "List items (competencies, services) MUST stagger in. Delay children by 0.1s using `transition: { staggerChildren: 0.1 }`."
+  },
+  "layout_and_spacing": {
+    "containers": "Max-width 7xl (`max-w-7xl mx-auto px-6 md:px-12`).",
+    "section_padding": "Massive spacing. Default `py-24` or `py-32`. No cramped sections.",
+    "bento_grids": "Use Mode A 'Tetris Grid'. Avoid equal columns. Mix `col-span-12 md:col-span-8` with `md:col-span-4` cards."
+  },
+  "component_rules": {
+    "buttons": "Primary CTA: Flat pure red (`bg-[#FF2A2A] text-white`). Hover state: Expand width slightly or add a subtle red drop-shadow. No border-radius (sharp corners `rounded-none` or max `rounded-sm` for industrial feel).",
+    "cards": "Dark metallic glass: `bg-[#13151A]/80 backdrop-blur-xl border border-white/5`. Hover: `border-white/20`. Add a subtle inner light beam effect using a radial gradient mask if possible.",
+    "navigation": "Crystal Glassmorphism sticky header: `fixed top-0 w-full z-50 bg-[#0A0A0C]/70 backdrop-blur-2xl border-b border-white/5`. Must have a solid background, never completely transparent.",
+    "testing": "MANDATORY: Every interactive element (buttons, links, form inputs, tabs) MUST have a descriptive `data-testid` attribute (e.g., `data-testid='contact-submit-button'`)."
+  },
+  "page_by_page_plan": {
+    "home": {
+      "hero": "Cinematic dark background overlay (`bg-black/50`). Huge typography (`text-6xl md:text-8xl`). Staggered text entrance. Parallax image.",
+      "stats": "Grid of 4 counters. Numbers scale up and count from 0. Font: JetBrains Mono.",
+      "services_preview": "Bento grid (6 services). 3D hover tilt on cards.",
+      "trusted_by": "Infinite marquee (`react-fast-marquee`) of white logos on dark background. Slow speed, high opacity (0.5 to 1 on hover)."
     },
-    "stats": {
-      "type": "Minimal",
-      "structure": "3-column grid. Large serif numbers (text-6xl).",
-      "style": "Clean white background, navy text. No boxes."
+    "about": {
+      "company_profile": "Split layout. Text on left, sticky image on right with parallax. Reveal text blocks on scroll.",
+      "competencies": "List of industrial capabilities that slide in from the left sequentially.",
+      "facilities": "3 plant locations. Large cards with hover-zoom images (`overflow-hidden`, image `scale-110` on hover).",
+      "quality_policy": "Full width dark section. Large quote typography. Cinematic lighting."
     },
     "services": {
-      "type": "Bento Grid",
-      "cards": "White cards, shadow-sm, hover:shadow-xl transition-all duration-300. 1px border-slate-100.",
-      "interaction": "Hover lifts card (-translate-y-1)."
+      "hero": "Minimalist header with red accent line.",
+      "explorer": "Shadcn Tabs customized for industrial look (no pills, use sharp active borders with Framer Motion `layoutId` for the active indicator).",
+      "detail_cards": "In-depth info revealing smoothly via `AnimatePresence` when a tab is clicked."
     },
-    "logos": {
-      "type": "Marquee",
-      "style": "Grayscale logos, opacity-50 hover:opacity-100. If images unavailable, use elegant Serif text for brand names."
+    "careers": {
+      "hero": "Dynamic video or high-energy photo of factory workers/engineers.",
+      "job_listings": "Accordion or list. Hovering a job row changes the background color and adds a right-arrow icon sliding in.",
+      "application_form": "Shadcn Form elements. Sharp inputs (`rounded-none`, `bg-[#13151A]`, `border-white/10`). Focus state: `ring-1 ring-[#FF2A2A]`."
     },
-    "navbar": {
-      "style": "Sticky, White background, shadow-sm. Navy text. Red CTA button 'Contact Us'."
+    "contact": {
+      "layout": "Two column. Left: Form. Right: Map/Details.",
+      "form": "Floating labels or clean modern inputs. Submit button has a 'sending' micro-animation.",
+      "details": "Hover over email/phone applies a magnetic pull effect or text scramble animation."
     }
   },
-  "images": {
-    "hero_main": {
-      "url": "https://images.unsplash.com/photo-1764185800646-f75f7e16e465?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alt": "High tech automotive factory floor",
-      "usage": "Home Page Hero Background"
-    },
-    "innovation": {
-      "url": "https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alt": "Engineer testing vehicle software",
-      "usage": "Innovation / Design Section"
-    },
-    "parts_production": {
-      "url": "https://images.unsplash.com/photo-1758873263428-f4b2edb45fe1?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alt": "Precision metal components",
-      "usage": "Manufacturing / Parts Shipped Stat Background"
-    },
-    "tooling_close_up": {
-      "url": "https://images.unsplash.com/photo-1645754884761-6ada0d53807b?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alt": "CNC Machine close up",
-      "usage": "Tooling Service Card"
-    },
-    "engineering_design": {
-      "url": "https://images.unsplash.com/photo-1769149068959-b11392164add?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alt": "Engineer looking at blueprints",
-      "usage": "Careers / Engineering Section"
-    }
-  },
-  "instructions_to_main_agent": [
-    "1. INSTALL FONTS: Add '@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');' to index.css.",
-    "2. TAILWIND CONFIG: Update theme colors to match the palette defined above. Extend font family: 'serif': ['Playfair Display', ...defaultTheme.fontFamily.serif].",
-    "3. SHADCN: Use 'card', 'button', 'input', 'label', 'textarea', 'dialog', 'sheet' components. Customize them to remove default rounded-xl if present, prefer rounded-md.",
-    "4. IMAGES: Use the provided Unsplash URLs. Add 'object-cover' to all images.",
-    "5. LOGOS: Since specific brand logos (Ford, BMW) are copyrighted, render them as high-end text logos in the 'Client' section using the Playfair font in grayscale, or use placeholders if you prefer.",
-    "6. MAP: Use an iframe for the Google Map in the Contact section. Address: 'Windsor, Ontario' (Generic automotive hub location for context).",
-    "7. DATA-TESTID: Add data-testid to all interactive elements (buttons, links, inputs)."
-  ],
-  "universal_guidelines": [
-    "Avoid 'AI Slop': No generic blue gradients. No 'robot' icons.",
-    "Micro-interactions: Add hover states to everything.",
-    "Spacing: Use 'py-24' for section spacing. Don't cram content.",
-    "Accessibility: Ensure Navy text on White bg meets contrast (it does, 13:1)."
-  ]
+  "media": {
+    "hero_background": "https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwzfHxjbmMlMjBtZXRhbCUyMG1pbGxpbmclMjBjbG9zZSUyMHVwfGVufDB8fHx8MTc4MTM3OTQ5N3ww&ixlib=rb-4.1.0&q=85",
+    "service_robotics": "https://images.unsplash.com/photo-1563968743333-044cef800494?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHw0fHxyb2JvdGljJTIwYXV0b21vdGl2ZSUyMGFzc2VtYmx5JTIwbGluZXxlbnwwfHx8fDE3ODEzNzk0OTh8MA&ixlib=rb-4.1.0&q=85",
+    "service_assembly": "https://images.unsplash.com/photo-1647427060118-4911c9821b82?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwyfHxyb2JvdGljJTIwYXV0b21vdGl2ZSUyMGFzc2VtYmx5JTIwbGluZXxlbnwwfHx8fDE3ODEzNzk0OTh8MA&ixlib=rb-4.1.0&q=85",
+    "facilities_exterior": "https://images.unsplash.com/photo-1595798896730-9fdf2e709649?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwZmFjdG9yeSUyMGJ1aWxkaW5nJTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzgxMzc5NDk4fDA&ixlib=rb-4.1.0&q=85",
+    "placeholder_logos": "Use Lucide-React icons (e.g., Settings, Car, Shield, Activity) as stand-ins for brand logos if specific SVG assets are unavailable, but place them inside generic circular/square company logo containers to simulate the 'Trusted By' section."
+  }
 }
