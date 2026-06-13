@@ -4,6 +4,7 @@ import { Footer } from '../components/Common/Footer'
 import { PageBanner } from '../components/Common/PageBanner'
 import { Button } from '../components/ui/button'
 import { Card, CardContent } from '../components/ui/card'
+import { Reveal, StaggerContainer, StaggerItem, PageTransition } from '../components/motion'
 import { ArrowLeft, CheckCircle2 } from 'lucide-react'
 
 const servicesData = {
@@ -21,59 +22,69 @@ export default function ServiceDetail() {
 
   if (!service) {
     return (
-      <div className="min-h-screen">
-        <Header />
-        <main className="py-24 text-center">
-          <h1 className="font-serif text-4xl font-bold text-primary mb-4">Service Not Found</h1>
-          <Link to="/services"><Button><ArrowLeft className="w-4 h-4 mr-2" />Back to Services</Button></Link>
-        </main>
-        <Footer />
-      </div>
+      <PageTransition>
+        <div className="min-h-screen">
+          <Header />
+          <main className="py-24 text-center">
+            <h1 className="font-serif text-4xl font-bold text-primary mb-4">Service Not Found</h1>
+            <Link to="/services"><Button><ArrowLeft className="w-4 h-4 mr-2" />Back to Services</Button></Link>
+          </main>
+          <Footer />
+        </div>
+      </PageTransition>
     )
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <PageBanner title={service.title} subtitle={service.subtitle} backgroundImage={service.bannerImage} />
-        <div className="bg-slate-50 py-4">
-          <div className="max-w-7xl mx-auto px-4">
-            <Link to="/services" className="inline-flex items-center gap-2 text-gray-500 hover:text-primary transition-colors"><ArrowLeft className="w-4 h-4" />Back to All Services</Link>
-          </div>
-        </div>
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-              <div>
-                <h2 className="font-serif text-3xl font-bold text-primary mb-6">{service.title}</h2>
-                <p className="text-lg text-gray-500 mb-10">{service.description}</p>
-                <Card>
-                  <CardContent className="p-6">
-                    <h3 className="font-serif text-xl font-bold text-primary mb-4">Key Features</h3>
-                    <ul className="space-y-3">
-                      {service.features.map((f, i) => (
-                        <li key={i} className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" /><span className="text-gray-700">{f}</span></li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="sticky top-24">
-                <img src={service.image} alt={service.title} className="w-full h-[500px] object-cover rounded-md shadow-lg mb-8" />
-                <Card className="bg-primary text-white border-0">
-                  <CardContent className="p-6">
-                    <h3 className="font-serif text-xl font-bold mb-4">Ready to Get Started?</h3>
-                    <p className="text-gray-200 mb-6">Contact our team to discuss your {service.title.toLowerCase()} requirements.</p>
-                    <Link to="/contact"><Button variant="accent" className="w-full">Contact Us Today</Button></Link>
-                  </CardContent>
-                </Card>
-              </div>
+    <PageTransition>
+      <div className="min-h-screen">
+        <Header />
+        <main>
+          <PageBanner title={service.title} subtitle={service.subtitle} backgroundImage={service.bannerImage} />
+          <div className="bg-slate-50 py-4">
+            <div className="max-w-7xl mx-auto px-4">
+              <Link to="/services" data-testid="back-to-services" className="inline-flex items-center gap-2 text-gray-500 hover:text-primary transition-colors"><ArrowLeft className="w-4 h-4" />Back to All Services</Link>
             </div>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+          <section className="py-24 bg-white">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="grid lg:grid-cols-2 gap-16 items-start">
+                <div>
+                  <Reveal><h2 className="font-serif text-3xl font-bold text-primary mb-6">{service.title}</h2></Reveal>
+                  <Reveal delay={0.08}><p className="text-lg text-gray-500 mb-10">{service.description}</p></Reveal>
+                  <Reveal delay={0.12}>
+                    <Card>
+                      <CardContent className="p-6">
+                        <h3 className="font-serif text-xl font-bold text-primary mb-4">Key Features</h3>
+                        <StaggerContainer as="ul" className="space-y-3" stagger={0.08}>
+                          {service.features.map((f, i) => (
+                            <StaggerItem key={i}>
+                              <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" /><span className="text-gray-700">{f}</span></li>
+                            </StaggerItem>
+                          ))}
+                        </StaggerContainer>
+                      </CardContent>
+                    </Card>
+                  </Reveal>
+                </div>
+                <Reveal delay={0.1}>
+                  <div className="sticky top-24">
+                    <img src={service.image} alt={service.title} className="w-full h-[500px] object-cover rounded-md shadow-lg mb-8" />
+                    <Card className="bg-primary text-white border-0">
+                      <CardContent className="p-6">
+                        <h3 className="font-serif text-xl font-bold mb-4">Ready to Get Started?</h3>
+                        <p className="text-gray-200 mb-6">Contact our team to discuss your {service.title.toLowerCase()} requirements.</p>
+                        <Link to="/contact"><Button variant="accent" className="w-full" data-testid="service-contact-btn">Contact Us Today</Button></Link>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </PageTransition>
   )
 }
