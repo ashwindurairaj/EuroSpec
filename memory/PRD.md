@@ -1,38 +1,32 @@
-# North American Metals (Eurospec) Website PRD
+# North American Metals (Eurospec) — Product Requirements
 
 ## Original Problem Statement
-Build a static website for North American Metals (operating as Eurospec) - Canadian automotive manufacturing company. Rebuilt with Vite + React 18, Node 20.x compatible. Email functionality using Python smtplib (NodeMailer-style) for contact and career forms to ashwinviyan@gmail.com.
+Responsive 5-page marketing website (Home, About, Services, Careers, Contact) for a Canadian automotive manufacturer "North American Metals Corp (NAMCO), operating as Eurospec Tooling & Manufacturing". Clean, manufacturing-themed. Contact + Career forms email to ashwinviyan@gmail.com.
 
 ## Tech Stack
-- **Frontend**: Vite + React 18 + react-router-dom v6 + Tailwind CSS
-- **Backend**: FastAPI (Python) with smtplib for emails
-- **No CRA/CRACO/webpack** - pure Vite
+- Frontend: React 18 + **Vite** + Tailwind + Shadcn UI. Env var: `VITE_API_URL` (frontend/.env).
+- Animations: framer-motion, lenis (smooth scroll), react-fast-marquee.
+- Backend: FastAPI (Uvicorn, port 8001) — supervisor-enforced (Node.js not possible). Endpoints: `POST /api/contact`, `POST /api/apply`, `GET /api/health`.
+- No MongoDB (backend only forwards emails).
 
-## What's Been Implemented (February 2026)
-- [x] Vite + React 18 frontend (npm run dev works on Node 20)
-- [x] All pages: Home, About Us, Services, Service Details, Careers, Contact
-- [x] Service cards on home page - clickable to /services/{serviceId}
-- [x] Job listings with Apply modal
-- [x] Contact form with Google Maps embed
-- [x] Email endpoints: /api/contact and /api/apply
-- [x] Resume file upload support
-- [x] Emails sent to ashwinviyan@gmail.com
-- [x] ADP Portal button in header
+## Implemented (2026-06-13)
+- 5 pages + ServiceDetail, all content from PDF. Light/clean theme (navy #202E4A + red accent #E63946).
+- **Animation overhaul (user chose: keep light theme + add rich animations):**
+  - Parallax hero + PageBanner, staggered hero text entrance
+  - Animated number counters (Home stats)
+  - Scroll-triggered reveals (Reveal/StaggerContainer/StaggerItem) — `viewport once:true`, end at opacity 1
+  - 3D tilt hover on cards (TiltCard)
+  - Infinite brand marquee (Trusted by)
+  - Page fade transitions (AnimatePresence), animated mobile menu, nav underline
+  - Reusable motion primitives at `src/components/motion/index.jsx`
+  - `prefers-reduced-motion` respected in index.css
+- Fixed `vite.config.js` allowedHosts -> `true` (was hardcoded old host, blocked preview/deploy).
+- Tested: testing_agent iteration_2 -> 100% backend (7/7 pytest) + 100% frontend. No issues.
 
-## Email Configuration (backend/.env)
-To enable actual email sending, configure:
-- MAIL_HOST=smtp.gmail.com
-- MAIL_PORT=587
-- MAIL_USER=your_email@gmail.com
-- MAIL_PASS=your_app_password (Gmail App Password)
-- MAIL_TO=ashwinviyan@gmail.com
+## Known / Mocked
+- **EMAIL SENDING IS MOCKED**: `send_email` returns success without sending when MAIL_USER/MAIL_PASS empty in backend/.env. Forms return success:true + show toast, but NO real email is delivered yet.
 
-## API Endpoints
-- GET /api/health - Health check
-- POST /api/contact - Contact form submission
-- POST /api/apply - Job application with resume upload
-
-## Next Tasks
-1. Configure Gmail SMTP credentials for actual email delivery
-2. Add more job listings if needed
-3. Update ADP Portal link to actual URL
+## Backlog / Next (P0/P1)
+- P0: Wire real email — user to choose Resend (API key) or Gmail SMTP (App Password). Add creds to backend/.env (MAIL_USER/MAIL_PASS) or integrate Resend.
+- P1: Add real ADP portal URL (currently https://workforcenow.adp.com placeholder in Header).
+- P1: Run deployment_agent health check before deploy; restrict CORS to prod domain.
