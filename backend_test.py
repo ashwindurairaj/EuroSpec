@@ -5,7 +5,7 @@ from datetime import datetime
 import io
 
 class NorthAmericanMetalsAPITester:
-    def __init__(self, base_url="https://91816b18-72ce-44c3-b9bb-cf84e832cedf.preview.emergentagent.com"):
+    def __init__(self, base_url="https://nam-industrial-build.preview.emergentagent.com"):
         self.base_url = base_url
         self.tests_run = 0
         self.tests_passed = 0
