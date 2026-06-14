@@ -37,6 +37,15 @@ Responsive 5-page marketing website (Home, About, Services, Careers, Contact) fo
 - Tested iteration_4 -> frontend 100%: nav has no white screen, plate transforms animate & reverse, all 5 director imgs load, no JS errors.
 - Backlog note: rename "NANCY KIRKPATRICK.png" -> NANCY.png (space in filename, works but fragile).
 
+## Iteration 5 (2026-06-14)
+- Real CEO photo (Ken Rudnick) added to About leadership section.
+- Centralized ALL imagery in `src/assets/images/` via `src/assets/images.js` registry (swap any file to update). Pulled the real company photos from the prior Netlify build (hero IMG_4363, experiences/facility, tooling WhatsApp img, manufacturing image1, innovation image2, floor) + localized stock images. Wired across Home/Services/ServiceDetail/Careers/Contact.
+- Replaced abstract "exploded die plates" with `ScrollShowcase.jsx`: an IMAGE-BASED pinned horizontal scroll of 5 real process panels + sweeping red accent line (scroll down = panels move left, scroll up = reverse). Tuned travel to -95vw so all panels reveal on desktop.
+- Added the missing "Our Capabilities in Action" gallery to Home (6 cards + Show More -> 9).
+- Card default now has a defined resting shadow (were flat white).
+- Renamed NANCY KIRKPATRICK.png -> NANCY.png (removed space).
+- Tested iteration_5 -> backend 7/7, frontend 100% (no broken images, scroll showcase transforms & reverses, capabilities toggle, CEO real photo, no white-screen).
+
 ## Known / Mocked
 - **EMAIL SENDING IS MOCKED**: `send_email` returns success without sending when MAIL_USER/MAIL_PASS empty in backend/.env. Forms return success:true + show toast, but NO real email is delivered yet.
 

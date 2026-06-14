@@ -7,7 +7,7 @@ import { Reveal, StaggerContainer, StaggerItem, TiltCard, PageTransition } from 
 import { CheckCircle2, Building2, Users, Globe, Award } from "lucide-react";
 import about from "../assets/images/about.jpeg";
 import ceoImage from "../assets/images/ceo.png";
-import Nancy from "../assets/images/NANCY KIRKPATRICK.png";
+import Nancy from "../assets/images/NANCY.png";
 import INDAR from "../assets/images/INDAR.png";
 import PIRABA from "../assets/images/PIRABA.png";
 import RANDY from "../assets/images/RANDY.png";

@@ -21,7 +21,7 @@ export function ScrollShowcase() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
   const p = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 })
 
-  const x = useTransform(p, [0, 1], ['1vw', '-80vw'])
+  const x = useTransform(p, [0, 1], ['1vw', '-95vw'])
   const redLeft = useTransform(p, [0, 1], ['-5%', '105%'])
   const fill = useTransform(p, [0, 1], ['0%', '100%'])
   const headOpacity = useTransform(p, [0, 0.12], [0, 1])
