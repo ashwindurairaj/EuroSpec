@@ -19,6 +19,15 @@ Build a static website for North American Metals (operating as Eurospec) - Canad
 - [x] Emails sent to ashwinviyan@gmail.com
 - [x] ADP Portal button in header
 
+## Animation & Asset Revamp (June 2026)
+- [x] All imagery localized into `src/assets/` and served via `src/assets/index.js` registry (no external Unsplash hotlinking)
+- [x] Added `framer-motion` for a modern 2026 motion feel across ALL pages
+- [x] Reveal/StaggerGroup/StaggerItem helpers (`src/components/Common/Reveal.jsx`) for scroll-triggered fade/slide reveals + staggered card entrances
+- [x] Hero entrance animations + background zoom; PageBanner parallax zoom on all inner pages
+- [x] Card hover-lift micro-interactions + image zoom-on-hover
+- [x] Signature "exploded view" scroll animation on Home hero (`src/components/Home/ExplodedTool.jsx`): a progressive stamping die splits into Upper Shoe / Punch Plate / Metal Strip / Die Plate / Lower Shoe as you scroll down, reassembles on scroll up. 2.5D depth via CSS perspective tilt. Verified working.
+- [x] vite.config.js `allowedHosts: true` so preview host loads correctly
+
 ## Email Configuration (backend/.env)
 To enable actual email sending, configure:
 - MAIL_HOST=smtp.gmail.com

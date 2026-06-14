@@ -11,6 +11,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../components/ui/select'
 import { toast } from 'sonner'
 import { Briefcase, MapPin, Clock, DollarSign } from 'lucide-react'
+import { Reveal, StaggerGroup, StaggerItem } from '../components/Common/Reveal'
+import { images } from '../assets'
 
 const jobs = [
   { id: 1, title: 'Senior Tooling Engineer', department: 'Engineering', location: 'Newmarket, Ontario', type: 'Full-time', salary: '$85,000 - $110,000', description: 'Lead design and development of progressive and transfer dies for automotive stamping.' },
@@ -71,55 +73,57 @@ export default function Careers() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <PageBanner title="Careers" subtitle="Join our team of industry-leading professionals" backgroundImage="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80" />
+        <PageBanner title="Careers" subtitle="Join our team of industry-leading professionals" backgroundImage={images.careersBanner} />
         
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <SectionTitle title="Why Join Eurospec?" subtitle="Be part of a team shaping the future of automotive manufacturing" />
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <Card className="text-center p-6"><CardContent className="p-0">
+            <Reveal><SectionTitle title="Why Join Eurospec?" subtitle="Be part of a team shaping the future of automotive manufacturing" /></Reveal>
+            <StaggerGroup className="grid md:grid-cols-3 gap-8 mb-16">
+              <StaggerItem><Card className="text-center p-6 h-full hover:shadow-md transition-shadow hover:-translate-y-1 duration-300"><CardContent className="p-0">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Briefcase className="w-8 h-8 text-primary" /></div>
                 <h3 className="font-serif text-xl font-bold text-primary mb-2">Career Growth</h3>
                 <p className="text-gray-500 text-sm">Opportunities for advancement and professional development.</p>
-              </CardContent></Card>
-              <Card className="text-center p-6"><CardContent className="p-0">
+              </CardContent></Card></StaggerItem>
+              <StaggerItem><Card className="text-center p-6 h-full hover:shadow-md transition-shadow hover:-translate-y-1 duration-300"><CardContent className="p-0">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><DollarSign className="w-8 h-8 text-primary" /></div>
                 <h3 className="font-serif text-xl font-bold text-primary mb-2">Competitive Benefits</h3>
                 <p className="text-gray-500 text-sm">Comprehensive benefits package including health and retirement.</p>
-              </CardContent></Card>
-              <Card className="text-center p-6"><CardContent className="p-0">
+              </CardContent></Card></StaggerItem>
+              <StaggerItem><Card className="text-center p-6 h-full hover:shadow-md transition-shadow hover:-translate-y-1 duration-300"><CardContent className="p-0">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Clock className="w-8 h-8 text-primary" /></div>
                 <h3 className="font-serif text-xl font-bold text-primary mb-2">Work-Life Balance</h3>
                 <p className="text-gray-500 text-sm">Flexible scheduling options and paid time off.</p>
-              </CardContent></Card>
-            </div>
+              </CardContent></Card></StaggerItem>
+            </StaggerGroup>
           </div>
         </section>
 
         <section className="py-24 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4">
-            <SectionTitle title="Open Positions" subtitle="Explore our current job opportunities" />
-            <div className="space-y-6">
+            <Reveal><SectionTitle title="Open Positions" subtitle="Explore our current job opportunities" /></Reveal>
+            <StaggerGroup className="space-y-6">
               {jobs.map((job) => (
-                <Card key={job.id} className="hover:shadow-md transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="font-serif text-xl font-bold text-primary mb-2">{job.title}</h3>
-                        <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                          <span className="flex items-center gap-1"><Briefcase className="w-4 h-4" />{job.department}</span>
-                          <span className="flex items-center gap-1"><MapPin className="w-4 h-4" />{job.location}</span>
-                          <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{job.type}</span>
-                          <span className="flex items-center gap-1"><DollarSign className="w-4 h-4" />{job.salary}</span>
+                <StaggerItem key={job.id}>
+                  <Card className="hover:shadow-md transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div className="flex-1">
+                          <h3 className="font-serif text-xl font-bold text-primary mb-2">{job.title}</h3>
+                          <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                            <span className="flex items-center gap-1"><Briefcase className="w-4 h-4" />{job.department}</span>
+                            <span className="flex items-center gap-1"><MapPin className="w-4 h-4" />{job.location}</span>
+                            <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{job.type}</span>
+                            <span className="flex items-center gap-1"><DollarSign className="w-4 h-4" />{job.salary}</span>
+                          </div>
+                          <p className="text-gray-500 mt-3">{job.description}</p>
                         </div>
-                        <p className="text-gray-500 mt-3">{job.description}</p>
+                        <Button variant="accent" onClick={() => handleApply(job)} data-testid={`apply-btn-${job.id}`}>Apply Now</Button>
                       </div>
-                      <Button variant="accent" onClick={() => handleApply(job)}>Apply Now</Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </section>
 
