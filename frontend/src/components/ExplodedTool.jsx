@@ -56,7 +56,7 @@ export function ExplodedTool() {
   const redOpacity = useTransform(progress, [0, 0.25, 0.85, 1], [0, 0.9, 0.9, 0.2])
   const headOpacity = useTransform(progress, [0, 0.18], [0, 1])
   const headY = useTransform(progress, [0, 0.18], [24, 0])
-  const stateLabel = useTransform(progress, [0, 0.5, 1], ['ASSEMBLED', 'DISASSEMBLING', 'EXPLODED VIEW'])
+  const stateLabel = useTransform(progress, [0, 0.15, 0.5, 0.85, 1], ['ASSEMBLED', 'ASSEMBLED', 'DISASSEMBLING', 'EXPLODED VIEW', 'EXPLODED VIEW'])
   const fillWidth = useTransform(progress, [0.05, 0.85], ['0%', '100%'])
 
   return (

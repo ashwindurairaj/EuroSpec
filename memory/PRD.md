@@ -30,6 +30,13 @@ Responsive 5-page marketing website (Home, About, Services, Careers, Contact) fo
 - Integrated with site animations (Reveal/Stagger). Tested iteration_3 -> frontend 100%, no broken images.
 - Note: filename `NANCY KIRKPATRICK.png` has a space (matches user's git code) — works, consider renaming later.
 
+## Iteration 4 (2026-06-14)
+- Swapped in REAL director photos (RANDY, PIRABA, NANCY KIRKPATRICK, INDAR, VLADIMIR — mapped by filename) over placeholders. CEO (ceo.png) still placeholder pending user upload.
+- Fixed white-screen flash on page navigation: removed `AnimatePresence mode="wait"` (caused a blank gap); pages now mount with a 0.25s fade-in. App.jsx + motion/index.jsx PageTransition.
+- NEW: `components/ExplodedTool.jsx` — scroll-driven exploded view of a 5-plate progressive stamping die-set. Sticky 300vh section on Home; plates separate on scroll-down, reassemble on scroll-up; red accent band sweeps + progress bar. Inserted in Home between Overview and Services.
+- Tested iteration_4 -> frontend 100%: nav has no white screen, plate transforms animate & reverse, all 5 director imgs load, no JS errors.
+- Backlog note: rename "NANCY KIRKPATRICK.png" -> NANCY.png (space in filename, works but fragile).
+
 ## Known / Mocked
 - **EMAIL SENDING IS MOCKED**: `send_email` returns success without sending when MAIL_USER/MAIL_PASS empty in backend/.env. Forms return success:true + show toast, but NO real email is delivered yet.
 
