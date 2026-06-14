@@ -9,6 +9,7 @@ import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
 import { Textarea } from '../components/ui/textarea'
 import { Reveal, StaggerContainer, StaggerItem, TiltCard, PageTransition } from '../components/motion'
+import { contactBanner } from '../assets/images'
 import { toast } from 'sonner'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
@@ -55,7 +56,7 @@ export default function Contact() {
       <div className="min-h-screen">
         <Header />
         <main>
-          <PageBanner title="Contact Us" subtitle="Get in touch with our team" backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80" />
+          <PageBanner title="Contact Us" subtitle="Get in touch with our team" backgroundImage={contactBanner} />
 
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4">

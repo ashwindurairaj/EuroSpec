@@ -7,15 +7,16 @@ import { SectionTitle } from '../components/Common/SectionTitle'
 import { Card, CardContent } from '../components/ui/card'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs'
 import { StaggerContainer, StaggerItem, TiltCard, PageTransition } from '../components/motion'
+import { img } from '../assets/images'
 import { ArrowRight, Wrench, Factory, PenTool, Cog, Boxes, Sparkles } from 'lucide-react'
 
 const services = [
-  { id: 'tooling', title: 'Tooling', icon: Wrench, image: 'https://images.unsplash.com/photo-1727373203627-73457889fe0f?auto=format&fit=crop&w=800&q=80', description: 'Progressive dies, transfer dies, and line dies. Preferred tooling vendor for OEMs globally.', features: ['Progressive Die Design up to 180 inches', '60,000 pounds lifting capacity', 'Transfer Die: Hand Transfer, Mechanical', 'In-house Tool Try-out and Certification'] },
-  { id: 'manufacturing', title: 'Manufacturing', icon: Factory, image: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800&q=80', description: 'Full-service manufacturing with presses ranging from 300-1500 tons.', features: ['Mechanical Presses: 300-1500 tons', 'Fully Automated Assemblies', 'Projection & Spot Welding', 'Robotic MIG Welding'] },
-  { id: 'design', title: 'Design & Development', icon: PenTool, image: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=800&q=80', description: 'Complete in-house tool design capabilities with advanced CAD/CAE.', features: ['CATIA V5, NX10, SolidWorks', 'LS DynaForm, Mastercam X9', 'Metal forming simulation', 'Prototype development'] },
-  { id: 'capabilities', title: 'Capabilities', icon: Cog, image: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=800&q=80', description: 'Extensive experience with advanced materials and processes.', features: ['HSLA 340MPa-550MPa', 'Dual Phase up to 1000MPa', '1mm – 8mm thickness', 'IATF 16949 certified'] },
-  { id: 'assembly', title: 'Assembly', icon: Boxes, image: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=800&q=80', description: 'Complex sub-assemblies for automotive seating, BIW, and chassis.', features: ['Seat Frames and Structures', 'Seat Recliner Mechanisms', 'Body in White components', 'Child Restraint Assemblies'] },
-  { id: 'innovation', title: 'Innovation', icon: Sparkles, image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80', description: 'Advanced simulation and analysis for optimized designs.', features: ['Forming Limit Design', 'Material Thinning Analysis', 'Die Design simulation', 'Virtual try-out'] },
+  { id: 'tooling', title: 'Tooling', icon: Wrench, image: img.tooling, description: 'Progressive dies, transfer dies, and line dies. Preferred tooling vendor for OEMs globally.', features: ['Progressive Die Design up to 180 inches', '60,000 pounds lifting capacity', 'Transfer Die: Hand Transfer, Mechanical', 'In-house Tool Try-out and Certification'] },
+  { id: 'manufacturing', title: 'Manufacturing', icon: Factory, image: img.manufacturing, description: 'Full-service manufacturing with presses ranging from 300-1500 tons.', features: ['Mechanical Presses: 300-1500 tons', 'Fully Automated Assemblies', 'Projection & Spot Welding', 'Robotic MIG Welding'] },
+  { id: 'design', title: 'Design & Development', icon: PenTool, image: img.design, description: 'Complete in-house tool design capabilities with advanced CAD/CAE.', features: ['CATIA V5, NX10, SolidWorks', 'LS DynaForm, Mastercam X9', 'Metal forming simulation', 'Prototype development'] },
+  { id: 'capabilities', title: 'Capabilities', icon: Cog, image: img.machining, description: 'Extensive experience with advanced materials and processes.', features: ['HSLA 340MPa-550MPa', 'Dual Phase up to 1000MPa', '1mm – 8mm thickness', 'IATF 16949 certified'] },
+  { id: 'assembly', title: 'Assembly', icon: Boxes, image: img.assembly, description: 'Complex sub-assemblies for automotive seating, BIW, and chassis.', features: ['Seat Frames and Structures', 'Seat Recliner Mechanisms', 'Body in White components', 'Child Restraint Assemblies'] },
+  { id: 'innovation', title: 'Innovation', icon: Sparkles, image: img.innovation, description: 'Advanced simulation and analysis for optimized designs.', features: ['Forming Limit Design', 'Material Thinning Analysis', 'Die Design simulation', 'Virtual try-out'] },
 ]
 
 export default function Services() {
@@ -24,7 +25,7 @@ export default function Services() {
       <div className="min-h-screen">
         <Header />
         <main>
-          <PageBanner title="Our Services" subtitle="Comprehensive automotive manufacturing solutions" backgroundImage="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1920&q=80" />
+          <PageBanner title="Our Services" subtitle="Comprehensive automotive manufacturing solutions" backgroundImage={img.press} />
 
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4">

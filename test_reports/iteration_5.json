@@ -1,0 +1,26 @@
+{
+  "summary": "Iteration 5 (both backend + frontend) validated on https://metalworks-hub-12.preview.emergentagent.com. Backend pytest: 7/7 PASS (/api/health, /api/contact incl. validation, /api/apply with+without resume, validation). Frontend full coverage: (1) Hero background uses '/src/assets/images/hero.png' (assets pipeline). 20 imgs on Home, 0 broken. (2) Stat counters reach 40+, 250, 60M+, 35M. Hero CTAs route to /services and /contact (verified by data-testids). (3) ScrollShowcase ([data-testid=scroll-showcase-section]) renders with heading 'Our process, in motion.' All 5 panel images load (naturalWidth 800/1600, alts: Design & Engineering, Tooling, Stamping & Press, Welding & Assembly, Quality & Shipping). Horizontal strip transform translateX shifts from matrix(...,19.2,0) at entry -> matrix(...,-1536,0) after scrolling DOWN (panels move LEFT) and reverses back to ~17.5 after scrolling UP — reversibility confirmed. (4) 'Our Capabilities in Action' ([data-testid=capabilities-in-action]) shows 6 cards (capability-0..5) initially, all 6 images load. Clicking 'Show More' ([data-testid=capabilities-show-more]) expands to 9 cards (capability-0..8) and button text flips to 'Show Less'; clicking again collapses back to 6. (5) Service cards render with images & resting shadow (visual check OK). 'Trusted by' marquee renders (Ford visible). (6) About page: CEO card uses REAL photo /src/assets/images/ceo.png alt='CEO Ken Rudnick', naturalWidth=896 (not initials placeholder). All 5 director names (PIRABA/INDAR/NANCY/RANDY/VLADIMIR) present, 7/7 imgs load. (7) All routes (/, /about, /services, /careers, /contact, /services/tooling) load with body text and no white-screen flash; banner images load (svc detail tooling banner 1/1). (8) Contact form submit -> toast 'Message Sent! We will respond within 24-48 hours.' (9) Careers apply dialog opens, all fields fillable (name, email, phone, Years of Experience select, resume upload); submission -> toast 'Application Submitted! We will be in touch soon.' Zero console errors / pageerrors across all flows.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/backend/tests/test_backend_apis.py", "/app/test_reports/pytest/pytest_results.xml", "/app/test_reports/iteration_5.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ScrollShowcase: useTransform clamps translateX between '1vw' and '-80vw' but the panel strip width (5 panels × 34vw + 24px gaps + 6vw padding ≈ 196vw) actually needs more travel to show all 5 panels fully. At end of scroll, last panel (Quality & Shipping) is partially off-screen on common 1920px widths. Consider increasing the negative end to '-130vw' (or computing strip width dynamically) so all 5 panels are fully revealed by the time scrollYProgress=1.",
+    "Home.jsx capabilities array has 9 items but only 6 are visible until Show More — fine UX, but capability-6..8 use images already used in capability-0..5 (e.g., img.welding appears twice: 'Robotic Welding' and indirectly under 'Press Shop' is press.jpg — actually distinct; img.quality is used at capability-5 Metal Stamping and again? Verify uniqueness). No duplicate images detected on second look, but suggest reviewing semantic alt text — 'Quality Control' card uses img.design which is design.jpg (mismatch between title and source image).",
+    "images.js imports work but URLs are served raw (/src/assets/images/*) via Vite dev server — in production build these will be hashed via Vite's import pipeline (already imported via ES modules so production build is fine).",
+    "Director image filename 'NANCY KIRKPATRICK.png' still contains a space (URL-encoded as %20). Rename to NANCY.png to match siblings (PIRABA, INDAR, RANDY, VLADIMIR).",
+    "Contact form has required 'Subject' field (not advertised in test plan). Backend POST /api/contact however allows subject to be optional in pytest (test_contact_minimal_required passed without subject) — frontend/backend validation are inconsistent. Decide on source of truth."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (7/7 pytest)", "frontend": "100% — every acceptance criterion verified"},
+  "test_credentials": "None — public marketing site",
+  "seed_data_creation": "None (used /tmp/test_resume.pdf scratch file for resume upload)",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All iteration-5 acceptance criteria pass on preview URL. Useful selectors: [data-testid=scroll-showcase-section], horizontal strip = sec.querySelector('.flex.gap-6') whose computed transform matrix tx changes from ~+19 to ~-1536 across the 320vh section. Capabilities: [data-testid^=capability-] (6 default, 9 expanded) + [data-testid=capabilities-show-more] toggles. Contact form needs Subject + Name + Email + Message; Apply dialog needs Name+Email+Phone+Years(experience shadcn Select with [role=combobox])+File upload (input[type=file]). Use mouse.wheel(0,400) loops with 150ms waits then 1000ms settle for lenis-friendly scroll reads.",
+  "rca of the issue": "No issues found — all 8 features-or-bugs-to-test items pass cleanly."
+}

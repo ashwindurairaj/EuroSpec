@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Marquee from 'react-fast-marquee'
@@ -8,16 +8,17 @@ import { SectionTitle } from '../components/Common/SectionTitle'
 import { Button } from '../components/ui/button'
 import { Card, CardContent } from '../components/ui/card'
 import { Reveal, StaggerContainer, StaggerItem, TiltCard, Counter, PageTransition } from '../components/motion'
-import { ExplodedTool } from '../components/ExplodedTool'
+import { ScrollShowcase } from '../components/ScrollShowcase'
+import { img } from '../assets/images'
 import { ArrowRight, CheckCircle2, Wrench, Factory, PenTool, Cog, Boxes, Sparkles } from 'lucide-react'
 
 const services = [
-  { id: 'tooling', title: 'Tooling', description: 'Progressive dies, transfer dies, and line dies up to 180 inches.', icon: Wrench, image: 'https://images.unsplash.com/photo-1727373203627-73457889fe0f?auto=format&fit=crop&w=600&q=80' },
-  { id: 'manufacturing', title: 'Manufacturing', description: 'Mechanical presses ranging from 300-1500 tons.', icon: Factory, image: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=600&q=80' },
-  { id: 'design', title: 'Design & Development', description: 'CAD design, CAE, prototyping and validation.', icon: PenTool, image: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=600&q=80' },
-  { id: 'capabilities', title: 'Capabilities', description: 'HSLA, Dual Phase steels up to 1000MPa.', icon: Cog, image: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=600&q=80' },
-  { id: 'assembly', title: 'Assembly', description: 'Fully automated assemblies, riveting, welding.', icon: Boxes, image: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=600&q=80' },
-  { id: 'innovation', title: 'Innovation', description: 'Forming simulations and material analysis.', icon: Sparkles, image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80' },
+  { id: 'tooling', title: 'Tooling', description: 'Progressive dies, transfer dies, and line dies up to 180 inches.', icon: Wrench, image: img.tooling },
+  { id: 'manufacturing', title: 'Manufacturing', description: 'Mechanical presses ranging from 300-1500 tons.', icon: Factory, image: img.manufacturing },
+  { id: 'design', title: 'Design & Development', description: 'CAD design, CAE, prototyping and validation.', icon: PenTool, image: img.design },
+  { id: 'capabilities', title: 'Capabilities', description: 'HSLA, Dual Phase steels up to 1000MPa.', icon: Cog, image: img.machining },
+  { id: 'assembly', title: 'Assembly', description: 'Fully automated assemblies, riveting, welding.', icon: Boxes, image: img.assembly },
+  { id: 'innovation', title: 'Innovation', description: 'Forming simulations and material analysis.', icon: Sparkles, image: img.innovation },
 ]
 
 const features = [
@@ -37,6 +38,18 @@ const stats = [
 
 const customers = ['Ford', 'GM', 'Stellantis', 'BMW', 'Mercedes-Benz', 'Honda', 'Toyota', 'Nissan']
 
+const capabilities = [
+  { image: img.floor, title: 'Manufacturing Floor', category: 'Manufacturing' },
+  { image: img.welding, title: 'Robotic Welding', category: 'Welding' },
+  { image: img.design, title: 'Quality Control', category: 'Quality' },
+  { image: img.engineering, title: 'Engineering Design', category: 'Design' },
+  { image: img.assembly, title: 'Assembly Line', category: 'Assembly' },
+  { image: img.quality, title: 'Metal Stamping', category: 'Manufacturing' },
+  { image: img.press, title: 'Press Shop', category: 'Stamping' },
+  { image: img.tooling, title: 'Tooling Bay', category: 'Tooling' },
+  { image: img.innovation, title: 'Innovation Lab', category: 'Innovation' },
+]
+
 const heroContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
@@ -53,6 +66,9 @@ export default function Home() {
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.28])
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
 
+  const [showAllCaps, setShowAllCaps] = useState(false)
+  const visibleCaps = showAllCaps ? capabilities : capabilities.slice(0, 6)
+
   return (
     <PageTransition>
       <div className="min-h-screen">
@@ -62,7 +78,7 @@ export default function Home() {
           <section ref={heroRef} className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
             <motion.div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1920&q=80')`, y: bgY, scale: bgScale }}
+              style={{ backgroundImage: `url('${img.hero}')`, y: bgY, scale: bgScale }}
             />
             <div className="absolute inset-0 bg-primary/85" />
             <motion.div style={{ y: contentY }} className="relative z-10 max-w-7xl mx-auto px-4 text-center">
@@ -116,19 +132,19 @@ export default function Home() {
                 </div>
                 <StaggerContainer className="grid grid-cols-2 gap-4">
                   <div className="space-y-4">
-                    <StaggerItem><img src="https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=600&q=80" alt="Machining" className="w-full h-48 object-cover rounded-md shadow-md" /></StaggerItem>
-                    <StaggerItem><img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=600&q=80" alt="Facility" className="w-full h-64 object-cover rounded-md shadow-md" /></StaggerItem>
+                    <StaggerItem><img src={img.machining} alt="Machining" className="w-full h-48 object-cover rounded-md shadow-md" /></StaggerItem>
+                    <StaggerItem><img src={img.experiences} alt="Facility" className="w-full h-64 object-cover rounded-md shadow-md" /></StaggerItem>
                   </div>
                   <div className="pt-8">
-                    <StaggerItem><img src="https://images.unsplash.com/photo-1742967416909-ffbceccbf4da?auto=format&fit=crop&w=600&q=80" alt="Quality" className="w-full h-80 object-cover rounded-md shadow-md" /></StaggerItem>
+                    <StaggerItem><img src={img.quality} alt="Quality" className="w-full h-80 object-cover rounded-md shadow-md" /></StaggerItem>
                   </div>
                 </StaggerContainer>
               </div>
             </div>
           </section>
 
-          {/* Exploded tool scroll animation */}
-          <ExplodedTool />
+          {/* Scroll-driven process showcase (real images) */}
+          <ScrollShowcase />
 
           {/* Services */}
           <section className="py-24 bg-slate-50">
@@ -175,6 +191,36 @@ export default function Home() {
                 ))}
               </Marquee>
             </Reveal>
+          </section>
+
+          {/* Our Capabilities in Action */}
+          <section className="py-24 bg-slate-50" data-testid="capabilities-in-action">
+            <div className="max-w-7xl mx-auto px-4">
+              <SectionTitle title="Our Capabilities in Action" subtitle="Explore our state-of-the-art facilities and manufacturing processes" />
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {visibleCaps.map((cap, i) => (
+                  <StaggerItem key={cap.title}>
+                    <div className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300" data-testid={`capability-${i}`}>
+                      <div className="aspect-[3/2] overflow-hidden">
+                        <img src={cap.image} alt={cap.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <p className="text-white font-semibold text-lg">{cap.title}</p>
+                          <p className="text-accent text-sm">{cap.category}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+              <div className="text-center">
+                <Button variant="accent" size="lg" className="group" onClick={() => setShowAllCaps((v) => !v)} data-testid="capabilities-show-more">
+                  {showAllCaps ? 'Show Less' : 'Show More'}
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </div>
           </section>
         </main>
         <Footer />

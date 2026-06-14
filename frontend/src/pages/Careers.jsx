@@ -11,6 +11,7 @@ import { Label } from '../components/ui/label'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../components/ui/select'
 import { StaggerContainer, StaggerItem, TiltCard, PageTransition } from '../components/motion'
+import { careersBanner } from '../assets/images'
 import { toast } from 'sonner'
 import { Briefcase, MapPin, Clock, DollarSign, ArrowRight } from 'lucide-react'
 
@@ -80,7 +81,7 @@ export default function Careers() {
       <div className="min-h-screen">
         <Header />
         <main>
-          <PageBanner title="Careers" subtitle="Join our team of industry-leading professionals" backgroundImage="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80" />
+          <PageBanner title="Careers" subtitle="Join our team of industry-leading professionals" backgroundImage={careersBanner} />
 
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4">
