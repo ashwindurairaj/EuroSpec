@@ -23,6 +23,13 @@ Responsive 5-page marketing website (Home, About, Services, Careers, Contact) fo
 - Fixed `vite.config.js` allowedHosts -> `true` (was hardcoded old host, blocked preview/deploy).
 - Tested: testing_agent iteration_2 -> 100% backend (7/7 pytest) + 100% frontend. No issues.
 
+## About page Leadership Team (2026-06-14)
+- Added user-supplied "Our Visionaries / Leadership Team" section: CEO card (Ken Rudnick) + 5 director cards (Piraba, Indar, Nancy, Randy, Vladimir).
+- Images imported from `src/assets/images/` (about.jpeg + 6 portraits). **Portraits are PLACEHOLDER initial-avatars** generated via PIL — user must upload real photos to replace files of the same name.
+- Fixed: removed unsupported `<style jsx>` (moved float/pulse keyframes to index.css); replaced `var(--primary)` with #202E4A.
+- Integrated with site animations (Reveal/Stagger). Tested iteration_3 -> frontend 100%, no broken images.
+- Note: filename `NANCY KIRKPATRICK.png` has a space (matches user's git code) — works, consider renaming later.
+
 ## Known / Mocked
 - **EMAIL SENDING IS MOCKED**: `send_email` returns success without sending when MAIL_USER/MAIL_PASS empty in backend/.env. Forms return success:true + show toast, but NO real email is delivered yet.
 
