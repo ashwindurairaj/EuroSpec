@@ -8,6 +8,7 @@ import { SectionTitle } from '../components/Common/SectionTitle'
 import { Button } from '../components/ui/button'
 import { Card, CardContent } from '../components/ui/card'
 import { Reveal, StaggerContainer, StaggerItem, TiltCard, Counter, PageTransition } from '../components/motion'
+import { ExplodedTool } from '../components/ExplodedTool'
 import { ArrowRight, CheckCircle2, Wrench, Factory, PenTool, Cog, Boxes, Sparkles } from 'lucide-react'
 
 const services = [
@@ -125,6 +126,9 @@ export default function Home() {
               </div>
             </div>
           </section>
+
+          {/* Exploded tool scroll animation */}
+          <ExplodedTool />
 
           {/* Services */}
           <section className="py-24 bg-slate-50">

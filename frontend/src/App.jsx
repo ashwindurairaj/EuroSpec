@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
 import { Toaster } from 'sonner'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -17,11 +16,11 @@ function ScrollToTop() {
   return null
 }
 
-function AnimatedRoutes() {
-  const location = useLocation()
+function App() {
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
@@ -29,15 +28,6 @@ function AnimatedRoutes() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </AnimatePresence>
-  )
-}
-
-function App() {
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <AnimatedRoutes />
       <Toaster position="top-right" richColors />
     </BrowserRouter>
   )
