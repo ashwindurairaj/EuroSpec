@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Header } from '../components/Common/Header'
 import { Footer } from '../components/Common/Footer'
 import { PageBanner } from '../components/Common/PageBanner'
@@ -9,8 +10,10 @@ import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../components/ui/select'
+import { StaggerContainer, StaggerItem, TiltCard, PageTransition } from '../components/motion'
+import { careersBanner } from '../assets/images'
 import { toast } from 'sonner'
-import { Briefcase, MapPin, Clock, DollarSign } from 'lucide-react'
+import { Briefcase, MapPin, Clock, DollarSign, ArrowRight } from 'lucide-react'
 
 const jobs = [
   { id: 1, title: 'Senior Tooling Engineer', department: 'Engineering', location: 'Newmarket, Ontario', type: 'Full-time', salary: '$85,000 - $110,000', description: 'Lead design and development of progressive and transfer dies for automotive stamping.' },
@@ -18,6 +21,12 @@ const jobs = [
   { id: 3, title: 'Quality Control Manager', department: 'Quality Assurance', location: 'Newmarket, Ontario', type: 'Full-time', salary: '$75,000 - $95,000', description: 'Lead quality assurance team in maintaining IATF 16949 certification.' },
   { id: 4, title: 'Robotic Welder Operator', department: 'Manufacturing', location: 'Newmarket, Ontario', type: 'Full-time', salary: '$50,000 - $65,000', description: 'Operate robotic MIG welding systems for automotive assembly production.' },
   { id: 5, title: 'CAD Designer', department: 'Engineering', location: 'Newmarket, Ontario', type: 'Full-time', salary: '$60,000 - $80,000', description: 'Create detailed 3D models and 2D drawings using CATIA and NX.' },
+]
+
+const benefits = [
+  { icon: Briefcase, title: 'Career Growth', text: 'Opportunities for advancement and professional development.' },
+  { icon: DollarSign, title: 'Competitive Benefits', text: 'Comprehensive benefits package including health and retirement.' },
+  { icon: Clock, title: 'Work-Life Balance', text: 'Flexible scheduling options and paid time off.' },
 ]
 
 export default function Careers() {
@@ -68,84 +77,89 @@ export default function Careers() {
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <PageBanner title="Careers" subtitle="Join our team of industry-leading professionals" backgroundImage="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80" />
-        
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <SectionTitle title="Why Join Eurospec?" subtitle="Be part of a team shaping the future of automotive manufacturing" />
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <Card className="text-center p-6"><CardContent className="p-0">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Briefcase className="w-8 h-8 text-primary" /></div>
-                <h3 className="font-serif text-xl font-bold text-primary mb-2">Career Growth</h3>
-                <p className="text-gray-500 text-sm">Opportunities for advancement and professional development.</p>
-              </CardContent></Card>
-              <Card className="text-center p-6"><CardContent className="p-0">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><DollarSign className="w-8 h-8 text-primary" /></div>
-                <h3 className="font-serif text-xl font-bold text-primary mb-2">Competitive Benefits</h3>
-                <p className="text-gray-500 text-sm">Comprehensive benefits package including health and retirement.</p>
-              </CardContent></Card>
-              <Card className="text-center p-6"><CardContent className="p-0">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Clock className="w-8 h-8 text-primary" /></div>
-                <h3 className="font-serif text-xl font-bold text-primary mb-2">Work-Life Balance</h3>
-                <p className="text-gray-500 text-sm">Flexible scheduling options and paid time off.</p>
-              </CardContent></Card>
-            </div>
-          </div>
-        </section>
+    <PageTransition>
+      <div className="min-h-screen">
+        <Header />
+        <main>
+          <PageBanner title="Careers" subtitle="Join our team of industry-leading professionals" backgroundImage={careersBanner} />
 
-        <section className="py-24 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <SectionTitle title="Open Positions" subtitle="Explore our current job opportunities" />
-            <div className="space-y-6">
-              {jobs.map((job) => (
-                <Card key={job.id} className="hover:shadow-md transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="font-serif text-xl font-bold text-primary mb-2">{job.title}</h3>
-                        <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                          <span className="flex items-center gap-1"><Briefcase className="w-4 h-4" />{job.department}</span>
-                          <span className="flex items-center gap-1"><MapPin className="w-4 h-4" />{job.location}</span>
-                          <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{job.type}</span>
-                          <span className="flex items-center gap-1"><DollarSign className="w-4 h-4" />{job.salary}</span>
-                        </div>
-                        <p className="text-gray-500 mt-3">{job.description}</p>
-                      </div>
-                      <Button variant="accent" onClick={() => handleApply(job)}>Apply Now</Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+          <section className="py-24 bg-white">
+            <div className="max-w-7xl mx-auto px-4">
+              <SectionTitle title="Why Join Eurospec?" subtitle="Be part of a team shaping the future of automotive manufacturing" />
+              <StaggerContainer className="grid md:grid-cols-3 gap-8 mb-16">
+                {benefits.map((b, i) => {
+                  const Icon = b.icon
+                  return (
+                    <StaggerItem key={i} className="h-full">
+                      <TiltCard className="h-full">
+                        <Card className="text-center p-6 h-full hover:shadow-lg transition-shadow"><CardContent className="p-0">
+                          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Icon className="w-8 h-8 text-primary" /></div>
+                          <h3 className="font-serif text-xl font-bold text-primary mb-2">{b.title}</h3>
+                          <p className="text-gray-500 text-sm">{b.text}</p>
+                        </CardContent></Card>
+                      </TiltCard>
+                    </StaggerItem>
+                  )
+                })}
+              </StaggerContainer>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogContent className="max-w-lg">
-            <DialogHeader>
-              <DialogTitle className="font-serif text-2xl text-primary">Apply for {selectedJob?.title}</DialogTitle>
-              <DialogDescription>Fill out the form below to submit your application.</DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2"><Label htmlFor="name">Full Name *</Label><Input id="name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="John Doe" /></div>
-              <div className="space-y-2"><Label htmlFor="email">Email Address *</Label><Input id="email" type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="john@example.com" /></div>
-              <div className="space-y-2"><Label htmlFor="phone">Phone Number *</Label><Input id="phone" type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="(555) 123-4567" /></div>
-              <div className="space-y-2"><Label>Years of Experience *</Label>
-                <Select value={formData.experience} onValueChange={(v) => setFormData({ ...formData, experience: v })}>
-                  <SelectTrigger><SelectValue placeholder="Select experience" /></SelectTrigger>
-                  <SelectContent><SelectItem value="0-2">0-2 years</SelectItem><SelectItem value="3-5">3-5 years</SelectItem><SelectItem value="5-10">5-10 years</SelectItem><SelectItem value="10+">10+ years</SelectItem></SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2"><Label htmlFor="resume">Upload Resume *</Label><Input id="resume" type="file" required accept=".pdf,.doc,.docx" onChange={(e) => setResume(e.target.files[0])} className="cursor-pointer" /></div>
-              <Button type="submit" variant="accent" className="w-full" disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit Application'}</Button>
-            </form>
-          </DialogContent>
-        </Dialog>
-      </main>
-      <Footer />
-    </div>
+          <section className="py-24 bg-slate-50">
+            <div className="max-w-7xl mx-auto px-4">
+              <SectionTitle title="Open Positions" subtitle="Explore our current job opportunities" />
+              <StaggerContainer className="space-y-6">
+                {jobs.map((job) => (
+                  <StaggerItem key={job.id}>
+                    <motion.div whileHover={{ x: 6 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
+                      <Card className="group hover:shadow-md transition-shadow border-l-4 border-l-transparent hover:border-l-accent">
+                        <CardContent className="p-6">
+                          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div className="flex-1">
+                              <h3 className="font-serif text-xl font-bold text-primary mb-2 flex items-center gap-2">{job.title}<ArrowRight className="w-4 h-4 text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /></h3>
+                              <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                                <span className="flex items-center gap-1"><Briefcase className="w-4 h-4" />{job.department}</span>
+                                <span className="flex items-center gap-1"><MapPin className="w-4 h-4" />{job.location}</span>
+                                <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{job.type}</span>
+                                <span className="flex items-center gap-1"><DollarSign className="w-4 h-4" />{job.salary}</span>
+                              </div>
+                              <p className="text-gray-500 mt-3">{job.description}</p>
+                            </div>
+                            <Button variant="accent" onClick={() => handleApply(job)} data-testid={`apply-btn-${job.id}`}>Apply Now</Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </div>
+          </section>
+
+          <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <DialogContent className="max-w-lg">
+              <DialogHeader>
+                <DialogTitle className="font-serif text-2xl text-primary">Apply for {selectedJob?.title}</DialogTitle>
+                <DialogDescription>Fill out the form below to submit your application.</DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2"><Label htmlFor="name">Full Name *</Label><Input id="name" data-testid="apply-name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="John Doe" /></div>
+                <div className="space-y-2"><Label htmlFor="email">Email Address *</Label><Input id="email" data-testid="apply-email" type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="john@example.com" /></div>
+                <div className="space-y-2"><Label htmlFor="phone">Phone Number *</Label><Input id="phone" data-testid="apply-phone" type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="(555) 123-4567" /></div>
+                <div className="space-y-2"><Label>Years of Experience *</Label>
+                  <Select value={formData.experience} onValueChange={(v) => setFormData({ ...formData, experience: v })}>
+                    <SelectTrigger data-testid="apply-experience"><SelectValue placeholder="Select experience" /></SelectTrigger>
+                    <SelectContent><SelectItem value="0-2">0-2 years</SelectItem><SelectItem value="3-5">3-5 years</SelectItem><SelectItem value="5-10">5-10 years</SelectItem><SelectItem value="10+">10+ years</SelectItem></SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2"><Label htmlFor="resume">Upload Resume *</Label><Input id="resume" data-testid="apply-resume" type="file" required accept=".pdf,.doc,.docx" onChange={(e) => setResume(e.target.files[0])} className="cursor-pointer" /></div>
+                <Button type="submit" variant="accent" className="w-full" disabled={isSubmitting} data-testid="apply-submit">{isSubmitting ? 'Submitting...' : 'Submit Application'}</Button>
+              </form>
+            </DialogContent>
+          </Dialog>
+        </main>
+        <Footer />
+      </div>
+    </PageTransition>
   )
 }
