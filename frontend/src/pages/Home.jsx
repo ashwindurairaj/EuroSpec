@@ -125,6 +125,64 @@ const heroItem = {
   },
 };
 
+// Gallery images - Define all 9 images here
+const galleryImages = [
+  {
+    id: 1,
+    src: floor,
+    alt: 'Manufacturing Floor',
+    category: 'Manufacturing'
+  },
+  {
+    id: 2,
+    src: 'https://images.unsplash.com/photo-1727373203627-73457889fe0f?auto=format&fit=crop&w=800&q=80',
+    alt: 'Robotic Welding',
+    category: 'Welding'
+  },
+  {
+    id: 3,
+    src: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=800&q=80',
+    alt: 'Quality Control',
+    category: 'Quality'
+  },
+  {
+    id: 4,
+    src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    alt: 'Engineering Design',
+    category: 'Design'
+  },
+  {
+    id: 5,
+    src: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=800&q=80',
+    alt: 'Assembly Line',
+    category: 'Assembly'
+  },
+  {
+    id: 6,
+    src: 'https://images.unsplash.com/photo-1742967416909-ffbceccbf4da?auto=format&fit=crop&w=800&q=80',
+    alt: 'Metal Stamping',
+    category: 'Manufacturing'
+  },
+  {
+    id: 7,
+     src: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=800&q=80',
+    alt: 'Precision Machining',
+    category: 'Tooling'
+  },
+  {
+    id: 8,
+    src: manufacturing,
+    alt: 'Production Facility',
+    category: 'Facility'
+  },
+  {
+    id: 9,
+    src: tooling,
+    alt: 'Tool Manufacturing',
+    category: 'Tooling'
+  }
+]
+
 export default function Home() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
