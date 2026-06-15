@@ -155,7 +155,7 @@ export default function About() {
                   <p className="font-serif text-4xl font-bold">40+</p>
                   <p className="text-sm">Years of Excellence</p>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -176,7 +176,7 @@ export default function About() {
                   <span className="text-gray-700">{item}</span>
                 </div>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </section>
 
@@ -198,7 +198,7 @@ export default function About() {
                   </CardContent>
                 </Card>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </section>
 
@@ -479,7 +479,7 @@ export default function About() {
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
       <Footer />

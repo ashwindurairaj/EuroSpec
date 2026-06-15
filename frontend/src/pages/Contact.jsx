@@ -10,6 +10,8 @@ import { Label } from '../components/ui/label'
 import { Textarea } from '../components/ui/textarea'
 import { toast } from 'sonner'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { Reveal, StaggerGroup, StaggerItem } from '../components/Common/Reveal'
+import { images } from '../assets'
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -46,35 +48,35 @@ export default function Contact() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <PageBanner title="Contact Us" subtitle="Get in touch with our team" backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80" />
+        <PageBanner title="Contact Us" subtitle="Get in touch with our team" backgroundImage={images.contactBanner} />
         
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              <Card className="text-center p-6"><CardContent className="p-0">
+            <StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              <StaggerItem><Card className="text-center p-6 h-full hover:shadow-md transition-shadow"><CardContent className="p-0">
                 <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><MapPin className="w-7 h-7 text-primary" /></div>
                 <h3 className="font-serif text-lg font-bold text-primary mb-2">Address</h3>
                 <p className="text-gray-500 text-sm">130 Harry Walker Parkway<br />Newmarket, Ontario, Canada</p>
-              </CardContent></Card>
-              <Card className="text-center p-6"><CardContent className="p-0">
+              </CardContent></Card></StaggerItem>
+              <StaggerItem><Card className="text-center p-6 h-full hover:shadow-md transition-shadow"><CardContent className="p-0">
                 <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Phone className="w-7 h-7 text-primary" /></div>
                 <h3 className="font-serif text-lg font-bold text-primary mb-2">Phone</h3>
                 <a href="tel:+12482498130" className="text-gray-500 text-sm hover:text-primary">(248) 249-8130</a>
-              </CardContent></Card>
-              <Card className="text-center p-6"><CardContent className="p-0">
+              </CardContent></Card></StaggerItem>
+              <StaggerItem><Card className="text-center p-6 h-full hover:shadow-md transition-shadow"><CardContent className="p-0">
                 <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Mail className="w-7 h-7 text-primary" /></div>
                 <h3 className="font-serif text-lg font-bold text-primary mb-2">Email</h3>
                 <a href="mailto:mwilley@eurospectooling.com" className="text-gray-500 text-sm hover:text-primary break-all">mwilley@eurospectooling.com</a>
-              </CardContent></Card>
-              <Card className="text-center p-6"><CardContent className="p-0">
+              </CardContent></Card></StaggerItem>
+              <StaggerItem><Card className="text-center p-6 h-full hover:shadow-md transition-shadow"><CardContent className="p-0">
                 <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><Clock className="w-7 h-7 text-primary" /></div>
                 <h3 className="font-serif text-lg font-bold text-primary mb-2">Business Hours</h3>
                 <p className="text-gray-500 text-sm">Mon - Fri: 8:00 AM - 5:00 PM<br />Saturday & Sunday: Closed</p>
-              </CardContent></Card>
-            </div>
+              </CardContent></Card></StaggerItem>
+            </StaggerGroup>
 
             <div className="grid lg:grid-cols-2 gap-16">
-              <div>
+              <Reveal direction="right">
                 <SectionTitle title="Send Us a Message" subtitle="We'll get back to you within 24-48 hours" centered={false} />
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
@@ -89,9 +91,9 @@ export default function Contact() {
                   <div className="space-y-2"><Label htmlFor="message">Message *</Label><Textarea id="message" rows={5} required value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} placeholder="Tell us about your project or inquiry..." /></div>
                   <Button type="submit" variant="accent" className="w-full" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send Message'}</Button>
                 </form>
-              </div>
+              </Reveal>
 
-              <div>
+              <Reveal direction="left" delay={0.12}>
                 <SectionTitle title="Our Location" subtitle="Visit our main facility in Newmarket, Ontario" centered={false} />
                 <div className="rounded-md overflow-hidden shadow-lg mb-8">
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.4812853768654!2d-79.46183842391682!3d44.04858857108844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882ad3a96a2e6e6b%3A0x6c6b5e9a4a3e6b6c!2s130%20Harry%20Walker%20Pkwy%20S%2C%20Newmarket%2C%20ON!5e0!3m2!1sen!2sca!4v1699999999999!5m2!1sen!2sca" width="100%" height="300" style={{ border: 0 }} allowFullScreen loading="lazy" title="Eurospec Location" />
@@ -108,7 +110,7 @@ export default function Contact() {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
