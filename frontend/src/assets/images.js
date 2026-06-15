@@ -17,9 +17,15 @@ import aboutBanner from './images/about-banner.jpg'
 import careersBanner from './images/careers-banner.jpg'
 import contactBanner from './images/contact-banner.jpg'
 import toolingBanner from './images/tooling-banner.jpg'
+import capone from './images/capone.jpg'
+import capthree from './images/capthree.jpg'
+import capfour from './images/capfour.jpg'
 
 export const img = {
   hero,
+  capone,
+  capthree,
+  capfour,
   experiences,
   tooling,
   manufacturing,
