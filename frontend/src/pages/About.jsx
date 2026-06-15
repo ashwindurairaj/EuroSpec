@@ -12,6 +12,7 @@ import INDAR from "../assets/images/INDAR.png";
 import PIRABA from "../assets/images/PIRABA.png";
 import RANDY from "../assets/images/RANDY.png";
 import VLADIMIR from "../assets/images/VLADIMIR.png";
+import { AboutTimeline } from "../components/AboutTimeline";
 
 const competencies = [
   "Four decades of experience supplying to Automotive",
@@ -99,6 +100,7 @@ export default function About() {
               </StaggerContainer>
             </div>
           </section>
+          <AboutTimeline/>
 
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4">

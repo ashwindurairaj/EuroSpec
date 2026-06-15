@@ -9,6 +9,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs'
 import { StaggerContainer, StaggerItem, TiltCard, PageTransition } from '../components/motion'
 import { img } from '../assets/images'
 import { ArrowRight, Wrench, Factory, PenTool, Cog, Boxes, Sparkles } from 'lucide-react'
+import { ServiceCapabilities } from '../components/ServiceCapabilities'
 
 const services = [
   { id: 'tooling', title: 'Tooling', icon: Wrench, image: img.tooling, description: 'Progressive dies, transfer dies, and line dies. Preferred tooling vendor for OEMs globally.', features: ['Progressive Die Design up to 180 inches', '60,000 pounds lifting capacity', 'Transfer Die: Hand Transfer, Mechanical', 'In-house Tool Try-out and Certification'] },
@@ -66,6 +67,7 @@ export default function Services() {
               </Tabs>
             </div>
           </section>
+          <ServiceCapabilities/>
 
           <section className="py-24 bg-slate-50">
             <div className="max-w-7xl mx-auto px-4">

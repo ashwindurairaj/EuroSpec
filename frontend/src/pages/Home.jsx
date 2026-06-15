@@ -1,73 +1,142 @@
-import { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import Marquee from 'react-fast-marquee'
-import { Header } from '../components/Common/Header'
-import { Footer } from '../components/Common/Footer'
-import { SectionTitle } from '../components/Common/SectionTitle'
-import { Button } from '../components/ui/button'
-import { Card, CardContent } from '../components/ui/card'
-import { Reveal, StaggerContainer, StaggerItem, TiltCard, Counter, PageTransition } from '../components/motion'
-import { ScrollShowcase } from '../components/ScrollShowcase'
-import { img } from '../assets/images'
-import { ArrowRight, CheckCircle2, Wrench, Factory, PenTool, Cog, Boxes, Sparkles } from 'lucide-react'
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Marquee from "react-fast-marquee";
+import { Header } from "../components/Common/Header";
+import { Footer } from "../components/Common/Footer";
+import { SectionTitle } from "../components/Common/SectionTitle";
+import { Button } from "../components/ui/button";
+import { Card, CardContent } from "../components/ui/card";
+import {
+  Reveal,
+  StaggerContainer,
+  StaggerItem,
+  TiltCard,
+  Counter,
+  PageTransition,
+} from "../components/motion";
+import { ScrollShowcase } from "../components/ScrollShowcase";
+import { img } from "../assets/images";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Wrench,
+  Factory,
+  PenTool,
+  Cog,
+  Boxes,
+  Sparkles,
+} from "lucide-react";
 
 const services = [
-  { id: 'tooling', title: 'Tooling', description: 'Progressive dies, transfer dies, and line dies up to 180 inches.', icon: Wrench, image: img.tooling },
-  { id: 'manufacturing', title: 'Manufacturing', description: 'Mechanical presses ranging from 300-1500 tons.', icon: Factory, image: img.manufacturing },
-  { id: 'design', title: 'Design & Development', description: 'CAD design, CAE, prototyping and validation.', icon: PenTool, image: img.design },
-  { id: 'capabilities', title: 'Capabilities', description: 'HSLA, Dual Phase steels up to 1000MPa.', icon: Cog, image: img.machining },
-  { id: 'assembly', title: 'Assembly', description: 'Fully automated assemblies, riveting, welding.', icon: Boxes, image: img.assembly },
-  { id: 'innovation', title: 'Innovation', description: 'Forming simulations and material analysis.', icon: Sparkles, image: img.innovation },
-]
+  {
+    id: "tooling",
+    title: "Tooling",
+    description:
+      "Progressive dies, transfer dies, and line dies up to 180 inches.",
+    icon: Wrench,
+    image: img.tooling,
+  },
+  {
+    id: "manufacturing",
+    title: "Manufacturing",
+    description: "Mechanical presses ranging from 300-1500 tons.",
+    icon: Factory,
+    image: img.manufacturing,
+  },
+  {
+    id: "design",
+    title: "Design & Development",
+    description: "CAD design, CAE, prototyping and validation.",
+    icon: PenTool,
+    image: img.design,
+  },
+  {
+    id: "capabilities",
+    title: "Capabilities",
+    description: "HSLA, Dual Phase steels up to 1000MPa.",
+    icon: Cog,
+    image: img.machining,
+  },
+  {
+    id: "assembly",
+    title: "Assembly",
+    description: "Fully automated assemblies, riveting, welding.",
+    icon: Boxes,
+    image: img.assembly,
+  },
+  {
+    id: "innovation",
+    title: "Innovation",
+    description: "Forming simulations and material analysis.",
+    icon: Sparkles,
+    image: img.innovation,
+  },
+];
 
 const features = [
-  'Progressive Dies, Transfer Dies and Line Dies',
-  'Metal Stampings, Welded Assemblies and Mechanisms',
-  'Complete In-house Tool Design Capabilities',
-  'Full-service Engineering Department',
-  'IATF 16949 Certified Quality Systems',
-]
+  "Progressive Dies, Transfer Dies and Line Dies",
+  "Metal Stampings, Welded Assemblies and Mechanisms",
+  "Complete In-house Tool Design Capabilities",
+  "Full-service Engineering Department",
+  "IATF 16949 Certified Quality Systems",
+];
 
 const stats = [
-  { value: 40, suffix: '+', label: 'Years Experience' },
-  { value: 250, suffix: '', label: 'Employees' },
-  { value: 60, suffix: 'M+', label: 'Components/Year' },
-  { value: 35, suffix: 'M', label: 'Parts Shipped' },
-]
+  { value: 40, suffix: "+", label: "Years Experience" },
+  { value: 250, suffix: "", label: "Employees" },
+  { value: 60, suffix: "M+", label: "Components/Year" },
+  { value: 35, suffix: "M", label: "Parts Shipped" },
+];
 
-const customers = ['Ford', 'GM', 'Stellantis', 'BMW', 'Mercedes-Benz', 'Honda', 'Toyota', 'Nissan']
+const customers = [
+  "Ford",
+  "GM",
+  "Stellantis",
+  "BMW",
+  "Mercedes-Benz",
+  "Honda",
+  "Toyota",
+  "Nissan",
+];
 
 const capabilities = [
-  { image: img.floor, title: 'Manufacturing Floor', category: 'Manufacturing' },
-  { image: img.welding, title: 'Robotic Welding', category: 'Welding' },
-  { image: img.design, title: 'Quality Control', category: 'Quality' },
-  { image: img.engineering, title: 'Engineering Design', category: 'Design' },
-  { image: img.assembly, title: 'Assembly Line', category: 'Assembly' },
-  { image: img.quality, title: 'Metal Stamping', category: 'Manufacturing' },
-  { image: img.press, title: 'Press Shop', category: 'Stamping' },
-  { image: img.tooling, title: 'Tooling Bay', category: 'Tooling' },
-  { image: img.innovation, title: 'Innovation Lab', category: 'Innovation' },
-]
+  { image: img.floor, title: "Manufacturing Floor", category: "Manufacturing" },
+  { image: img.welding, title: "Robotic Welding", category: "Welding" },
+  { image: img.design, title: "Quality Control", category: "Quality" },
+  { image: img.engineering, title: "Engineering Design", category: "Design" },
+  { image: img.assembly, title: "Assembly Line", category: "Assembly" },
+  { image: img.quality, title: "Metal Stamping", category: "Manufacturing" },
+  { image: img.press, title: "Press Shop", category: "Stamping" },
+  { image: img.tooling, title: "Tooling Bay", category: "Tooling" },
+  { image: img.innovation, title: "Innovation Lab", category: "Innovation" },
+];
 
 const heroContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-}
+};
 const heroItem = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-}
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export default function Home() {
-  const heroRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.28])
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.28]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
 
-  const [showAllCaps, setShowAllCaps] = useState(false)
-  const visibleCaps = showAllCaps ? capabilities : capabilities.slice(0, 6)
+  const [showAllCaps, setShowAllCaps] = useState(false);
+  const visibleCaps = showAllCaps ? capabilities : capabilities.slice(0, 6);
 
   return (
     <PageTransition>
@@ -75,24 +144,74 @@ export default function Home() {
         <Header />
         <main>
           {/* Hero */}
-          <section ref={heroRef} className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
+          <section
+            ref={heroRef}
+            className="relative min-h-[88vh] flex items-center justify-center overflow-hidden"
+          >
             <motion.div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${img.hero}')`, y: bgY, scale: bgScale }}
+              style={{
+                backgroundImage: `url('${img.hero}')`,
+                y: bgY,
+                scale: bgScale,
+              }}
             />
             <div className="absolute inset-0 bg-primary/85" />
-            <motion.div style={{ y: contentY }} className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-              <motion.div variants={heroContainer} initial="hidden" animate="visible">
-                <motion.p variants={heroItem} className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">Established 1985 • IATF 16949 Certified</motion.p>
-                <motion.h1 variants={heroItem} className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-                  Precision Engineering<span className="block text-accent">for Global Automotive</span>
-                </motion.h1>
-                <motion.p variants={heroItem} className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
-                  Four decades of excellence in tooling, stamping, mechanisms and assemblies.
+            <motion.div
+              style={{ y: contentY }}
+              className="relative z-10 max-w-7xl mx-auto px-4 text-center"
+            >
+              <motion.div
+                variants={heroContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                <motion.p
+                  variants={heroItem}
+                  className="text-accent font-medium mb-4 tracking-wider uppercase text-sm"
+                >
+                  Established 1985 • IATF 16949 Certified
                 </motion.p>
-                <motion.div variants={heroItem} className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/services"><Button variant="accent" size="lg" data-testid="hero-services-btn">Explore Our Services <ArrowRight className="ml-2 w-5 h-5" /></Button></Link>
-                  <Link to="/contact"><Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary" data-testid="hero-contact-btn">Contact Us</Button></Link>
+                <motion.h1
+                  variants={heroItem}
+                  className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+                >
+                  Precision Engineering
+                  <span className="block text-accent">
+                    for Global Automotive
+                  </span>
+                </motion.h1>
+                <motion.p
+                  variants={heroItem}
+                  className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto"
+                >
+                  Four decades of excellence in tooling, stamping, mechanisms
+                  and assemblies.
+                </motion.p>
+                <motion.div
+                  variants={heroItem}
+                  className="flex flex-col sm:flex-row gap-4 justify-center"
+                >
+                  <Link to="/services">
+                    <Button
+                      variant="accent"
+                      size="lg"
+                      data-testid="hero-services-btn"
+                    >
+                      Explore Our Services{" "}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-white text-white hover:bg-white hover:text-primary"
+                      data-testid="hero-contact-btn"
+                    >
+                      Contact Us
+                    </Button>
+                  </Link>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -100,8 +219,16 @@ export default function Home() {
               <div className="max-w-7xl mx-auto px-4 py-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                   {stats.map((s, i) => (
-                    <motion.div key={i} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 + i * 0.1 }} data-testid={`hero-stat-${i}`}>
-                      <p className="font-serif text-3xl md:text-4xl font-bold text-white"><Counter value={s.value} suffix={s.suffix} /></p>
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 + i * 0.1 }}
+                      data-testid={`hero-stat-${i}`}
+                    >
+                      <p className="font-serif text-3xl md:text-4xl font-bold text-white">
+                        <Counter value={s.value} suffix={s.suffix} />
+                      </p>
                       <p className="text-gray-300 text-sm">{s.label}</p>
                     </motion.div>
                   ))}
@@ -115,9 +242,17 @@ export default function Home() {
             <div className="max-w-7xl mx-auto px-4">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                  <SectionTitle title="Four Decades of Excellence" subtitle="Serving the global automotive industry since 1985" centered={false} />
+                  <SectionTitle
+                    title="Four Decades of Excellence"
+                    subtitle="Serving the global automotive industry since 1985"
+                    centered={false}
+                  />
                   <Reveal delay={0.1}>
-                    <p className="text-gray-500 mb-8">North American Metals Corp (NAMCO), operating as Eurospec Tooling & Manufacturing, has been a trusted partner for the automotive industry.</p>
+                    <p className="text-gray-500 mb-8">
+                      North American Metals Corp (NAMCO), operating as Eurospec
+                      Tooling & Manufacturing, has been a trusted partner for
+                      the automotive industry.
+                    </p>
                   </Reveal>
                   <StaggerContainer as="ul" className="space-y-4">
                     {features.map((f, i) => (
@@ -132,11 +267,29 @@ export default function Home() {
                 </div>
                 <StaggerContainer className="grid grid-cols-2 gap-4">
                   <div className="space-y-4">
-                    <StaggerItem><img src={img.machining} alt="Machining" className="w-full h-48 object-cover rounded-md shadow-md" /></StaggerItem>
-                    <StaggerItem><img src={img.experiences} alt="Facility" className="w-full h-64 object-cover rounded-md shadow-md" /></StaggerItem>
+                    <StaggerItem>
+                      <img
+                        src={img.machining}
+                        alt="Machining"
+                        className="w-full h-48 object-cover rounded-md shadow-md"
+                      />
+                    </StaggerItem>
+                    <StaggerItem>
+                      <img
+                        src={img.experiences}
+                        alt="Facility"
+                        className="w-full h-64 object-cover rounded-md shadow-md"
+                      />
+                    </StaggerItem>
                   </div>
                   <div className="pt-8">
-                    <StaggerItem><img src={img.quality} alt="Quality" className="w-full h-80 object-cover rounded-md shadow-md" /></StaggerItem>
+                    <StaggerItem>
+                      <img
+                        src={img.quality}
+                        alt="Quality"
+                        className="w-full h-80 object-cover rounded-md shadow-md"
+                      />
+                    </StaggerItem>
                   </div>
                 </StaggerContainer>
               </div>
@@ -149,31 +302,47 @@ export default function Home() {
           {/* Services */}
           <section className="py-24 bg-slate-50">
             <div className="max-w-7xl mx-auto px-4">
-              <SectionTitle title="Our Services" subtitle="Comprehensive solutions for the automotive manufacturing industry" />
+              <SectionTitle
+                title="Our Services"
+                subtitle="Comprehensive solutions for the automotive manufacturing industry"
+              />
               <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {services.map((service) => {
-                  const Icon = service.icon
+                  const Icon = service.icon;
                   return (
                     <StaggerItem key={service.id} className="h-full">
-                      <Link to={`/services/${service.id}`} className="group block h-full" data-testid={`home-service-${service.id}`}>
+                      <Link
+                        to={`/services/${service.id}`}
+                        className="group block h-full"
+                        data-testid={`home-service-${service.id}`}
+                      >
                         <TiltCard className="h-full">
                           <Card className="h-full overflow-hidden hover:shadow-xl transition-shadow duration-300">
                             <div className="relative h-48 overflow-hidden">
-                              <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                              <img
+                                src={service.image}
+                                alt={service.title}
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                              />
                               <div className="absolute inset-0 bg-primary/40 group-hover:bg-primary/30 transition-colors" />
-                              <div className="absolute top-4 left-4 p-3 bg-white rounded-md shadow-md"><Icon className="w-6 h-6 text-primary" /></div>
+                              <div className="absolute top-4 left-4 p-3 bg-white rounded-md shadow-md">
+                                <Icon className="w-6 h-6 text-primary" />
+                              </div>
                             </div>
                             <CardContent className="p-6">
                               <h3 className="font-serif text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors flex items-center justify-between">
-                                {service.title}<ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                                {service.title}
+                                <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                               </h3>
-                              <p className="text-gray-500 text-sm">{service.description}</p>
+                              <p className="text-gray-500 text-sm">
+                                {service.description}
+                              </p>
                             </CardContent>
                           </Card>
                         </TiltCard>
                       </Link>
                     </StaggerItem>
-                  )
+                  );
                 })}
               </StaggerContainer>
             </div>
@@ -182,31 +351,62 @@ export default function Home() {
           {/* Customers */}
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4">
-              <SectionTitle title="Trusted by Industry Leaders" subtitle="Supplying components to the world's most demanding automotive manufacturers" />
+              <SectionTitle
+                title="Trusted by Industry Leaders"
+                subtitle="Supplying components to the world's most demanding automotive manufacturers"
+              />
             </div>
             <Reveal>
-              <Marquee gradient gradientColor="#ffffff" gradientWidth={120} speed={45} pauseOnHover>
+              <Marquee
+                gradient
+                gradientColor="#ffffff"
+                gradientWidth={120}
+                speed={45}
+                pauseOnHover
+              >
                 {customers.map((c, i) => (
-                  <div key={i} className="font-serif text-2xl md:text-3xl font-semibold text-gray-400 hover:text-primary transition-colors mx-10">{c}</div>
+                  <div
+                    key={i}
+                    className="font-serif text-2xl md:text-3xl font-semibold text-gray-400 hover:text-primary transition-colors mx-10"
+                  >
+                    {c}
+                  </div>
                 ))}
               </Marquee>
             </Reveal>
           </section>
 
           {/* Our Capabilities in Action */}
-          <section className="py-24 bg-slate-50" data-testid="capabilities-in-action">
+          <section
+            className="py-24 bg-slate-50"
+            data-testid="capabilities-in-action"
+          >
             <div className="max-w-7xl mx-auto px-4">
-              <SectionTitle title="Our Capabilities in Action" subtitle="Explore our state-of-the-art facilities and manufacturing processes" />
+              <SectionTitle
+                title="Our Capabilities in Action"
+                subtitle="Explore our state-of-the-art facilities and manufacturing processes"
+              />
               <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {visibleCaps.map((cap, i) => (
+                {capabilities.map((cap, i) => (
                   <StaggerItem key={cap.title}>
-                    <div className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300" data-testid={`capability-${i}`}>
+                    <div
+                      className={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ${
+                        i >= 6 && !showAllCaps ? "hidden" : ""
+                      }`}
+                      data-testid={`capability-${i}`}
+                    >
                       <div className="aspect-[3/2] overflow-hidden">
-                        <img src={cap.image} alt={cap.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <img
+                          src={cap.image}
+                          alt={cap.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <p className="text-white font-semibold text-lg">{cap.title}</p>
+                          <p className="text-white font-semibold text-lg">
+                            {cap.title}
+                          </p>
                           <p className="text-accent text-sm">{cap.category}</p>
                         </div>
                       </div>
@@ -215,8 +415,14 @@ export default function Home() {
                 ))}
               </StaggerContainer>
               <div className="text-center">
-                <Button variant="accent" size="lg" className="group" onClick={() => setShowAllCaps((v) => !v)} data-testid="capabilities-show-more">
-                  {showAllCaps ? 'Show Less' : 'Show More'}
+                <Button
+                  variant="accent"
+                  size="lg"
+                  className="group"
+                  onClick={() => setShowAllCaps((v) => !v)}
+                  data-testid="capabilities-show-more"
+                >
+                  {showAllCaps ? "Show Less" : "Show More"}
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
@@ -226,5 +432,5 @@ export default function Home() {
         <Footer />
       </div>
     </PageTransition>
-  )
+  );
 }
