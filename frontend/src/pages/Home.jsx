@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Header } from '../components/Common/Header'
@@ -8,15 +9,20 @@ import { ExplodedTool } from '../components/Home/ExplodedTool'
 import { Button } from '../components/ui/button'
 import { Card, CardContent } from '../components/ui/card'
 import { ArrowRight, CheckCircle2, Wrench, Factory, PenTool, Cog, Boxes, Sparkles } from 'lucide-react'
-import { images } from '../assets'
+import tooling from '../assets/images/WhatsApp Image 2026-02-10 at 22.03.41.jpeg'
+import innovation from '../assets/images/image2.jpeg'
+import manufacturing from '../assets/images/image1.jpeg'
+import floor from '../assets/images/floor.jpeg'
+import experience from '../assets/images/experiences.jpeg'
+import homeBan from '../assets/images/IMG_4363.PNG'
 
 const services = [
-  { id: 'tooling', title: 'Tooling', description: 'Progressive dies, transfer dies, and line dies up to 180 inches.', icon: Wrench, image: images.tooling },
-  { id: 'manufacturing', title: 'Manufacturing', description: 'Mechanical presses ranging from 300-1500 tons.', icon: Factory, image: images.manufacturing },
-  { id: 'design', title: 'Design & Development', description: 'CAD design, CAE, prototyping and validation.', icon: PenTool, image: images.design },
-  { id: 'capabilities', title: 'Capabilities', description: 'HSLA, Dual Phase steels up to 1000MPa.', icon: Cog, image: images.capabilities },
-  { id: 'assembly', title: 'Assembly', description: 'Fully automated assemblies, riveting, welding.', icon: Boxes, image: images.assembly },
-  { id: 'innovation', title: 'Innovation', description: 'Forming simulations and material analysis.', icon: Sparkles, image: images.innovation },
+  { id: 'tooling', title: 'Tooling', description: 'Progressive dies, transfer dies, and line dies up to 180 inches.', icon: Wrench, image: tooling },
+  { id: 'manufacturing', title: 'Manufacturing', description: 'Mechanical presses ranging from 300-1500 tons.', icon: Factory, image: manufacturing },
+  { id: 'design', title: 'Design & Development', description: 'CAD design, CAE, prototyping and validation.', icon: PenTool, image: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=600&q=80' },
+  { id: 'capabilities', title: 'Capabilities', description: 'HSLA, Dual Phase steels up to 1000MPa.', icon: Cog, image: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=600&q=80' },
+  { id: 'assembly', title: 'Assembly', description: 'Fully automated assemblies, riveting, welding.', icon: Boxes, image: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=600&q=80' },
+  { id: 'innovation', title: 'Innovation', description: 'Forming simulations and material analysis.', icon: Sparkles, image: innovation },
 ]
 
 const features = [
@@ -36,22 +42,77 @@ const stats = [
 
 const customers = ['Ford', 'GM', 'Stellantis', 'BMW', 'Mercedes-Benz', 'Honda', 'Toyota', 'Nissan']
 
-const EASE = [0.22, 1, 0.36, 1]
+// Gallery images - Define all 9 images here
+const galleryImages = [
+  {
+    id: 1,
+    src: floor,
+    alt: 'Manufacturing Floor',
+    category: 'Manufacturing'
+  },
+  {
+    id: 2,
+    src: 'https://images.unsplash.com/photo-1727373203627-73457889fe0f?auto=format&fit=crop&w=800&q=80',
+    alt: 'Robotic Welding',
+    category: 'Welding'
+  },
+  {
+    id: 3,
+    src: 'https://images.unsplash.com/photo-1581092335331-5e00ac65e934?auto=format&fit=crop&w=800&q=80',
+    alt: 'Quality Control',
+    category: 'Quality'
+  },
+  {
+    id: 4,
+    src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    alt: 'Engineering Design',
+    category: 'Design'
+  },
+  {
+    id: 5,
+    src: 'https://images.unsplash.com/photo-1575305842946-0e807ce6f3fc?auto=format&fit=crop&w=800&q=80',
+    alt: 'Assembly Line',
+    category: 'Assembly'
+  },
+  {
+    id: 6,
+    src: 'https://images.unsplash.com/photo-1742967416909-ffbceccbf4da?auto=format&fit=crop&w=800&q=80',
+    alt: 'Metal Stamping',
+    category: 'Manufacturing'
+  },
+  {
+    id: 7,
+     src: 'https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=800&q=80',
+    alt: 'Precision Machining',
+    category: 'Tooling'
+  },
+  {
+    id: 8,
+    src: manufacturing,
+    alt: 'Production Facility',
+    category: 'Facility'
+  },
+  {
+    id: 9,
+    src: tooling,
+    alt: 'Tool Manufacturing',
+    category: 'Tooling'
+  }
+]
 
 export default function Home() {
+  const [showAllImages, setShowAllImages] = useState(false)
+  
+  // Display only first 6 images initially, all 9 when expanded
+  const displayedImages = showAllImages ? galleryImages : galleryImages.slice(0, 6)
+
   return (
     <div className="min-h-screen">
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
-          <motion.div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${images.heroFactory})` }}
-            initial={{ scale: 1.15 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.6, ease: EASE }}
-          />
+        <section className="relative min-h-[85vh] flex items-center justify-center">
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${homeBan})` }} />
           <div className="absolute inset-0 bg-primary/85" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
             <motion.p
@@ -113,17 +174,15 @@ export default function Home() {
                       </div>
                     </StaggerItem>
                   ))}
-                </StaggerGroup>
-              </Reveal>
-              <Reveal direction="left" delay={0.15}>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-4">
-                    <img src={images.capabilities} alt="Machining" className="w-full h-48 object-cover rounded-md shadow-md hover:scale-[1.03] transition-transform duration-500" />
-                    <img src={images.heroFactory} alt="Facility" className="w-full h-64 object-cover rounded-md shadow-md hover:scale-[1.03] transition-transform duration-500" />
-                  </div>
-                  <div className="pt-8">
-                    <img src={images.quality} alt="Quality" className="w-full h-80 object-cover rounded-md shadow-md hover:scale-[1.03] transition-transform duration-500" />
-                  </div>
+                </ul>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <img src="https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?auto=format&fit=crop&w=600&q=80" alt="Machining" className="w-full h-48 object-cover rounded-md shadow-md" />
+                  <img src={experience} alt="Facility" className="w-full h-64 object-cover rounded-md shadow-md" />
+                </div>
+                <div className="pt-8">
+                  <img src="https://images.unsplash.com/photo-1742967416909-ffbceccbf4da?auto=format&fit=crop&w=600&q=80" alt="Quality" className="w-full h-80 object-cover rounded-md shadow-md" />
                 </div>
               </Reveal>
             </div>
@@ -174,6 +233,69 @@ export default function Home() {
                 </StaggerItem>
               ))}
             </StaggerGroup>
+          </div>
+        </section>
+
+        {/* Gallery Section - NEW */}
+               <section className="py-24 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <SectionTitle 
+              title="Our Capabilities in Action" 
+              subtitle="Explore our state-of-the-art facilities and manufacturing processes" 
+            />
+            
+            {/* Image Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              {displayedImages.map((image) => (
+                <div 
+                  key={image.id} 
+                  className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="aspect-[3/2] overflow-hidden">
+                    <img 
+                      src={image.src} 
+                      alt={image.alt} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <p className="text-white font-semibold text-lg">{image.alt}</p>
+                      <p className="text-accent text-sm">{image.category}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Show More Button */}
+            {!showAllImages && (
+              <div className="text-center">
+                <Button 
+                  variant="accent" 
+                  size="lg"
+                  onClick={() => setShowAllImages(true)}
+                  className="group"
+                >
+                  Show More
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            )}
+
+            {/* Show Less Button (optional) */}
+            {showAllImages && (
+              <div className="text-center">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => setShowAllImages(false)}
+                  className="group"
+                >
+                  Show Less
+                </Button>
+              </div>
+            )}
           </div>
         </section>
       </main>
